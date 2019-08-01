@@ -20,7 +20,7 @@ sudo pacman -S --noconfirm --needed galculator geary gimp git glances gnome-disk
 sudo pacman -S --noconfirm --needed gnome-font-viewer gnome-screenshot gnome-system-monitor gnome-terminal gnome-tweak-tool 
 sudo pacman -S --noconfirm --needed gparted gpick grsync
 sudo pacman -S --noconfirm --needed hardinfo hddtemp hexchat htop 
-sudo pacman -S --noconfirm --needed inkscape inxi lm_sensors lsb-release meld mlocate mpv
+sudo pacman -S --noconfirm --needed inkscape lm_sensors lsb-release meld mlocate mpv
 sudo pacman -S --noconfirm --needed nemo net-tools numlockx openshot pinta plank polkit-gnome 
 sudo pacman -S --noconfirm --needed redshift ristretto sane screenfetch scrot shotwell 
 sudo pacman -S --noconfirm --needed simple-scan simplescreenrecorder smplayer sysstat 
@@ -33,7 +33,7 @@ sudo systemctl start vnstat
 ###############################################################################################
 
 # installation of zippers and unzippers
-sudo pacman -S --noconfirm --needed unace unrar p7zip zip unzip sharutils  uudeview  arj cabextract file-roller
+sudo pacman -S --noconfirm --needed unace unrar p7zip zip unzip sharutils uudeview arj cabextract file-roller
 
 ###############################################################################################
 
