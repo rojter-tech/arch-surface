@@ -34,8 +34,6 @@ mv PKGBUILD\?h\=packer /tmp/packer/PKGBUILD
 cd /tmp/packer
 makepkg -i /tmp/packer --noconfirm
 [ -d /tmp/packer ] && rm -rf /tmp/packer
-cd ~/
-
 
 grep "COMPRESSXZ=(xz" /etc/makepkg.conf && \
 grep "#MAKEFLAGS=\"-j" /etc/makepkg.conf && \
@@ -85,7 +83,6 @@ yay -S spotify-dev visual-studio-code-bin python-ptvsd --removemake --answerclea
 sudo pacman -S gimp chromium firefox vlc --noconfirm --needed
 
 yay -S urxvt-font-size-git python-pdftotext --removemake --answerclean No --answeredit N --noconfirm --needed
-
 
 sudo vim /etc/modprobe.d/alsa-base.conf
 

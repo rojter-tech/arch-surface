@@ -72,7 +72,6 @@ echo "::1		localhost" >> /etc/hosts
 echo "127.0.1.1	myhostname.localdomain	myhostname" >> /etc/hosts
 
 systemctl enable sshd.service
-systemctl enable dhcpcd
 
 passwd
 
