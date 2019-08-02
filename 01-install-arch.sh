@@ -35,7 +35,6 @@ p
 #write
 w
 
-
 mkfs.fat -F32 /dev/XXX1
 mkfs.ext4 /dev/XXX2
 mkswap /dev/XXX3
