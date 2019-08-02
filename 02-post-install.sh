@@ -14,8 +14,8 @@ useradd -m -g users -G wheel,storage,power,docker,autologin,audio,bumblebee \
 -s /bin/bash dreuter && \
 passwd dreuter
 
-visudo
-%wheel ALL=(ALL) NOPASSWD: ALL
+vim /etc/sudoers
+#%wheel ALL=(ALL) NOPASSWD: ALL
 
 su dreuter
 
@@ -59,7 +59,6 @@ sh 025-iwcore.sh #script
 
 sudo pacman -S lightdm lightdm-gtk-greeter --noconfirm --needed
 
-
 sudo pacman -S noto-fonts ttf-ubuntu-font-family \
 ttf-dejavu ttf-liberation ttf-droid \
 ttf-inconsolata ttf-roboto terminus-font \
@@ -93,10 +92,8 @@ sudo vim /etc/modprobe.d/alsa-base.conf
 #options snd_mia index=0
 #options snd_hda_intel index=1
 
-
-export USER=dreuter && \
 grep 'autologin-user=\|autologin-session=\|greeter-session=' /etc/lightdm/lightdm.conf && \
-sudo sed -i 's/#autologin-user=/autologin-user=$USER/g' /etc/lightdm/lightdm.conf && \
+sudo sed -i 's/#autologin-user=/autologin-user=dreuter/g' /etc/lightdm/lightdm.conf && \
 sudo sed -i 's/#autologin-session=/autologin-session=i3/g' /etc/lightdm/lightdm.conf && \
 sudo sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-gtk-greeter/g' /etc/lightdm/lightdm.conf && \
 grep 'autologin-user=\|autologin-session=\|greeter-session=' /etc/lightdm/lightdm.conf
@@ -130,4 +127,4 @@ xrdb ~/.Xresources
 sudo systemctl enable lightdm && \
 sudo systemctl start lightdm
 
-startx
+#startx

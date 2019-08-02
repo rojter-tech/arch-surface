@@ -12,13 +12,10 @@ set -e
 ##################################################################################################################
 
 
-
 echo "Copy/pasting gimp scripts and themes"
 
 cp settings/gimp/scripts/* ~/.gimp-2.8/scripts/
 cp -r settings/gimp/themes/* ~/.gimp-2.8/themes/
-
-
 
 echo "################################################################"
 echo "#########      gimp scripts and themes copied   ################"

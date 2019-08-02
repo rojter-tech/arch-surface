@@ -21,7 +21,6 @@ sudo mount -o remount,size=4G,noatime /tmp
 
 sh install-awesome-font-v1.sh
 
-
 # Conky Aureola
 
 sh conky-aureola-v3.sh
