@@ -24,9 +24,10 @@ grep "Color" /etc/pacman.conf
 
 sudo pacman -Syyuu --noconfirm --needed && \
 yay -Syyuu --noconfirm --needed
-sudo pacman -S nvidia nvidia-settings nvidia-utils \
-xf86-video-intel xorg-server xorg-apps xorg-twm \
-xorg-xinit bumblebee mesa i3-gaps i3blocks i3lock i3status numlockx \
+yay -S nvidia-full-beta-all nvidia-utils-full-beta-all nvidia-settings-full-beta-all \
+--removemake --answerclean N --answeredit N --noconfirm --needed
+sudo pacman -S xf86-video-intel xorg-server xorg-apps xorg-twm \
+xorg-xinit mesa i3-gaps i3blocks i3lock i3status numlockx \
 xterm rxvt-unicode --noconfirm --needed
 
 sudo pacman -S lightdm lightdm-gtk-greeter --noconfirm --needed
