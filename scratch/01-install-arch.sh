@@ -4,7 +4,6 @@ localectl list-keymaps | grep -i us
 find /usr/share/kbd/keymaps/ -type f
 loadkeys us
 
-
 wifi-menu
 timedatectl set-ntp true
 

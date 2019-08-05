@@ -1,0 +1,29 @@
+{
+    "workbench.colorTheme": "Night Owl",
+    "terminal.integrated.env.linux": {
+        "JULIA_NUM_THREADS": "8",
+    },
+    "julia.executablePath": "/opt/julia-1.1.1/bin/julia",
+    "julia.enableTelemetry": true,
+    "julia.additionalArgs": ["-p 8"],
+    "julia.environmentPath": "/home/dreuter/.julia/environments/v1.1/",
+    "window.zoomLevel": 0,
+    "python.dataScience.sendSelectionToInteractiveWindow": false,
+    "files.autoSave": "afterDelay",
+    "python.condaPath": "/home/dreuter/conda/bin/conda",
+    "python.analysis.cacheFolderPath": "/home/dreuter/conda/cache",
+    "python.pythonPath": "/home/dreuter/conda/bin/python",
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "git.autofetch": false,
+    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Termius'",
+    "matlab.linterConfig": "",
+    "matlab.matlabpath": "/usr/local/MATLAB/R2019a/bin/matlab",
+    "matlab.mlintpath": "/usr/local/MATLAB/R2019a/bin/glnxa64/mlint",
+    "files.associations": {
+        "*.m": "matlab"
+    },
+    "python.dataScience.showJupyterVariableExplorer": false,
+    "workbench.startupEditor": "newUntitledFile",
+    "explorer.confirmDragAndDrop": false,
+}
