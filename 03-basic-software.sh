@@ -25,7 +25,7 @@ grep "Color" /etc/pacman.conf
 sudo pacman -Syyuu --noconfirm --needed && \
 yay -Syyuu --noconfirm --needed
 yay -S nvidia-full-beta-all nvidia-utils-full-beta-all nvidia-settings-full-beta-all \
---removemake --answerclean N --answeredit N --noconfirm --needed
+--answerclean N --answeredit N --noconfirm --needed
 sudo pacman -S xf86-video-intel xorg-server xorg-apps xorg-twm \
 xorg-xinit mesa i3-gaps i3blocks i3lock i3status numlockx \
 xterm rxvt-unicode --noconfirm --needed
@@ -37,7 +37,7 @@ ttf-dejavu ttf-liberation ttf-droid \
 ttf-inconsolata ttf-roboto terminus-font \
 ttf-font-awesome --noconfirm --needed
 
-yay -S bluez-firmware --removemake --answerclean N --answeredit N --noconfirm --needed
+yay -S bluez-firmware --answerclean N --answeredit N --noconfirm --needed
 sudo pacman -S bluez bluez-utils bluez-libs \
 pulseaudio pulseaudio-bluetooth pulseaudio-equalizer \
 pulseaudio-alsa alsa-utils alsa-plugins alsa-lib pavucontrol \
@@ -50,15 +50,15 @@ sudo systemctl daemon-reload
 sudo pacman -S rxvt-unicode ranger rofi conky dmenu  \
 urxvt-perls perl-anyevent-i3 perl-json-xs --noconfirm --needed
 
-yay -S browsh gksu inxi-git --removemake --answerclean N --answeredit N --noconfirm --needed
+yay -S browsh gksu inxi-git --answerclean N --answeredit N --noconfirm --needed
 sudo pacman -S atool highlight elinks mediainfo w3m \
 ffmpegthumbnailer mupdf --noconfirm --needed
 
 yay -S firefox-nightly firefox-beta firefox-developer-edition spotify  \
-visual-studio-code-bin python-ptvsd --removemake --answerclean N --answeredit N --noconfirm --needed
+visual-studio-code-bin python-ptvsd --answerclean N --answeredit N --noconfirm --needed
 sudo pacman -S gimp chromium firefox vlc --noconfirm --needed
 
-yay -S urxvt-font-size-git python-pdftotext --removemake --answerclean No --answeredit N --noconfirm --needed
+yay -S urxvt-font-size-git python-pdftotext --answerclean N --answeredit N --noconfirm --needed
 
 grep 'autologin-user=\|autologin-session=\|greeter-session=' /etc/lightdm/lightdm.conf && \
 sudo sed -i 's/#autologin-user=/autologin-user=dreuter/g' /etc/lightdm/lightdm.conf && \
