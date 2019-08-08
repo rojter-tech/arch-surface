@@ -27,7 +27,7 @@ run $HOME/.scripts/connectwbl.sh
 xsetroot -cursor_name left_ptr &
 
 #Some ways to set your wallpaper besides variety or nitrogen
-feh --bg-scale ~/.xmonad/wall.jpg &
+feh --bg-scale ~/.xmonad/matrix_code-wallpaper-3000x2000.jpg &
 #start the conky to learn the shortcuts
 (conky -c $HOME/.xmonad/scripts/system-overview) &
 
