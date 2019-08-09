@@ -152,6 +152,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_F10), spawn $ "spotify" )
   , ((modMask, xK_F11), spawn $ "rofi -show run -fullscreen" )
   , ((modMask, xK_F12), spawn $ "rofi -show run" )
+  , ((modMask, xK_a), spawn $ "setxkbmap us" )
+  , ((modMask, xK_s), spawn $ "setxkbmap se" )
 
   -- SUPER + SHIFT KEYS
   , ((modMask .|. shiftMask , xK_Return ), spawn $ "thunar")
@@ -204,6 +206,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   --, ((mod1Mask, xK_Right), spawn $ "variety -n" )
   , ((mod1Mask, xK_F2), spawn $ "gmrun" )
   , ((mod1Mask, xK_F3), spawn $ "xfce4-appfinder" )
+  , ((mod1Mask, xK_s), spawn $ "setxkbmap se")
+  , ((mod1Mask, xK_a), spawn $ "setxkbmap us")
 
   --VARIETY KEYS WITH PYWAL
   
@@ -279,6 +283,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   --  Reset the layouts on the current workspace to default.
   , ((modMask .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf)
 
+
   -- Move focus to the next window.
   , ((modMask, xK_j), windows W.focusDown)
 
@@ -297,14 +302,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Swap the focused window with the next window.
   , ((modMask .|. shiftMask, xK_j), windows W.swapDown  )
 
-  -- Swap the focused window with the next window.
-  , ((controlMask .|. modMask, xK_Down), windows W.swapDown  )
-
   -- Swap the focused window with the previous window.
   , ((modMask .|. shiftMask, xK_k), windows W.swapUp    )
 
-  -- Swap the focused window with the previous window.
-  , ((controlMask .|. modMask, xK_Up), windows W.swapUp  )
 
   -- Shrink the master area.
   , ((controlMask .|. shiftMask , xK_Left), sendMessage Shrink)
@@ -315,11 +315,17 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Push window back into tiling.
   , ((controlMask .|. shiftMask , xK_t), withFocused $ windows . W.sink)
 
+  -- Swap the focused window with the previous window.
+  , ((controlMask .|. modMask, xK_Left), windows W.swapUp  )
+
+  -- Swap the focused window with the next window.
+  , ((controlMask .|. modMask, xK_Right), windows W.swapDown  )
+
   -- Increment the number of windows in the master area.
-  , ((controlMask .|. modMask, xK_Left), sendMessage (IncMasterN 1))
+  , ((controlMask .|. modMask, xK_Up), sendMessage (IncMasterN 1))
 
   -- Decrement the number of windows in the master area.
-  , ((controlMask .|. modMask, xK_Right), sendMessage (IncMasterN (-1)))
+  , ((controlMask .|. modMask, xK_Down), sendMessage (IncMasterN (-1)))
 
   ]
   ++
