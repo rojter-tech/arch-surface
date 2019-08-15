@@ -1,7 +1,8 @@
 #!/bin/bash
 sudo pacman -Syyuu --noconfirm --needed
 sudo pacman -S p7zip unzip docker gvim git rsync \
-bash-completion wget which --noconfirm --needed
+bash-completion wget which reflector --noconfirm --needed
+reflector --verbose --latest 200 --number 10 --sort rate --save /etc/pacman.d/mirrorlist
 mv /usr/bin/vi /usr/bin/vi.bak
 cp /usr/bin/vim /usr/bin/vi
 systemctl enable docker
