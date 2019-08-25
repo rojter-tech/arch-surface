@@ -108,226 +108,201 @@ myLayout = spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True $ avoidSt
         tiled_ratio = 1/2
 
 
-myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
+myMouseBindings XConfig {XMonad.modMask = modMask} = M.fromList
 
     -- mod-button1, Set the window to floating mode and move by dragging
-    [ ((modMask, 1), (\w -> focus w >> mouseMoveWindow w >> windows W.shiftMaster))
+    [ ((modMask, 1), \w -> focus w >> mouseMoveWindow w >> windows W.shiftMaster)
 
     -- mod-button2, Raise the window to the top of the stack
-    , ((modMask, 2), (\w -> focus w >> windows W.shiftMaster))
+    , ((modMask, 2), \w -> focus w >> windows W.shiftMaster)
 
     -- mod-button3, Set the window to floating mode and resize by dragging
-    , ((modMask, 3), (\w -> focus w >> mouseResizeWindow w >> windows W.shiftMaster))
+    , ((modMask, 3), \w -> focus w >> mouseResizeWindow w >> windows W.shiftMaster)
 
     ]
 
 -- keys config
 
-myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
+myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
   ----------------------------------------------------------------------
   -- SUPER + FUNCTION KEYS
-
-  [ ((modMask, xK_e), spawn $ "code" )
+  [ ((modMask, xK_e), spawn "vscodium" )
   , ((modMask, xK_f), sendMessage $ Toggle NBFULL)
-  , ((modMask, xK_h), spawn $ "urxvt 'htop task manager' -e htop" )
-  , ((modMask, xK_m), spawn $ "pragha" )
+  , ((modMask, xK_h), spawn "urxvt 'htop task manager' -e htop" )
+  , ((modMask, xK_m), spawn "pragha" )
   , ((modMask, xK_q), kill )
-  , ((modMask, xK_r), spawn $ "rofi-theme-selector" )
-  , ((modMask, xK_t), spawn $ "urxvt" )
-  , ((modMask, xK_v), spawn $ "pavucontrol" )
-  , ((modMask, xK_w), spawn $ ".config/polybar/launch.sh" )
-  , ((modMask, xK_y), spawn $ "polybar-msg cmd toggle" )
-  , ((modMask, xK_x), spawn $ "oblogout" )
-  , ((modMask, xK_Escape), spawn $ "xkill" )
-  , ((modMask, xK_Return), spawn $ "urxvt" )
-  , ((modMask, xK_F1), spawn $ ".config/polybar/launch.sh" )
-  , ((modMask, xK_F2), spawn $ "code" )
-  , ((modMask, xK_F3), spawn $ "inkscape" )
-  , ((modMask, xK_F4), spawn $ "gimp" )
-  , ((modMask, xK_F5), spawn $ "meld" )
-  , ((modMask, xK_F6), spawn $ "vlc --video-on-top" )
-  , ((modMask, xK_F7), spawn $ "virtualbox" )
-  , ((modMask, xK_F8), spawn $ "thunar" )
-  , ((modMask, xK_F9), spawn $ "evolution" )
-  , ((modMask, xK_F10), spawn $ "spotify" )
-  , ((modMask, xK_F11), spawn $ "rofi -show run -fullscreen" )
-  , ((modMask, xK_F12), spawn $ "rofi -show run" )
-  , ((modMask, xK_a), spawn $ "setxkbmap us" )
-  , ((modMask, xK_s), spawn $ "setxkbmap se" )
+  , ((modMask, xK_r), spawn "rofi-theme-selector" )
+  , ((modMask, xK_t), spawn "urxvt" )
+  , ((modMask, xK_v), spawn "pavucontrol" )
+  , ((modMask, xK_w), spawn ".config/polybar/launch.sh" )
+  , ((modMask, xK_y), spawn "polybar-msg cmd toggle" )
+  , ((modMask, xK_x), spawn "oblogout" )
+  , ((modMask, xK_Escape), spawn "xkill" )
+  , ((modMask, xK_Return), spawn "urxvt" )
+  , ((modMask, xK_F1), spawn ".config/polybar/launch.sh" )
+  , ((modMask, xK_F2), spawn "vscodium" )
+  , ((modMask, xK_F3), spawn "inkscape" )
+  , ((modMask, xK_F4), spawn "gimp" )
+  , ((modMask, xK_F5), spawn "meld" )
+  , ((modMask, xK_F6), spawn "vlc --video-on-top" )
+  , ((modMask, xK_F7), spawn "virtualbox" )
+  , ((modMask, xK_F8), spawn "thunar" )
+  , ((modMask, xK_F9), spawn "evolution" )
+  , ((modMask, xK_F10), spawn "spotify" )
+  , ((modMask, xK_F11), spawn "rofi -show run -fullscreen" )
+  , ((modMask, xK_F12), spawn "rofi -show run" )
+  , ((modMask, xK_a), spawn "setxkbmap us" )
+  , ((modMask, xK_s), spawn "setxkbmap se" )
 
   -- SUPER + SHIFT KEYS
-  , ((modMask .|. shiftMask , xK_Return ), spawn $ "thunar")
-  , ((modMask .|. shiftMask , xK_d ), spawn $ "dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")
-  , ((modMask .|. shiftMask , xK_r ), spawn $ "xmonad --recompile && xmonad --restart")
+  , ((modMask .|. shiftMask , xK_Return ), spawn "thunar")
+  , ((modMask .|. shiftMask , xK_d ), spawn "dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")
+  , ((modMask .|. shiftMask , xK_r ), spawn "xmonad --recompile && xmonad --restart")
   , ((modMask .|. shiftMask , xK_q ), kill)
   , ((modMask .|. shiftMask , xK_x ), io (exitWith ExitSuccess))
+  , ((modMask .|. shiftMask , xK_w ), spawn "sudo killall polybar" )
 
   -- CONTROL + SUPER KEYS
-  , ((controlMask .|. modMask, xK_c ), spawn $ "code")
-  , ((controlMask .|. modMask, xK_f ), spawn $ "firefox")
-  , ((controlMask .|. modMask, xK_t ), spawn $ "urxvt")
-  , ((controlMask .|. modMask, xK_p ), spawn $ ".config/polybar/launch.sh" )
-  , ((controlMask .|. modMask, xK_g ), spawn $ "chromium -no-default-browser-check")
-  , ((controlMask .|. modMask, xK_s ), spawn $ "spotify")
-  , ((controlMask .|. modMask, xK_j ), spawn $ "urxvt hold -e julia -p 8 --project=/home/dreuter/Github/julia-paths")
-  , ((controlMask .|. modMask, xK_m ), spawn $ "urxvt hold -e matlab -nojvm -nodisplay -nosplash")
-  , ((controlMask .|. modMask, xK_v ), spawn $ "urxvt hold -e sudo openvpn /home/dreuter/client.ovpn")
-  , ((controlMask .|. modMask, xK_Return ), spawn $ "urxvt")
+  , ((controlMask .|. modMask, xK_0 ), spawn "filelight")
+  , ((controlMask .|. modMask, xK_9 ), spawn "vmware")
+  , ((controlMask .|. modMask, xK_o ), spawn "(/opt/DataGrip-2019.2.2/bin/datagrip.sh) &")
+  , ((controlMask .|. modMask, xK_i ), spawn "(/opt/idea-IU-192.6262.58/bin/idea.sh) &")
+  , ((controlMask .|. modMask, xK_p ), spawn "(/opt/pycharm-2019.2.1/bin/pycharm.sh) &")
+  , ((controlMask .|. modMask, xK_c ), spawn "vscodium")
+  , ((controlMask .|. modMask, xK_f ), spawn "firefox")
+  , ((controlMask .|. modMask, xK_d ), spawn "firefox-developer-edition")
+  , ((controlMask .|. modMask, xK_t ), spawn "urxvt")
+  , ((controlMask .|. modMask, xK_g ), spawn "chromium -no-default-browser-check")
+  , ((controlMask .|. modMask, xK_s ), spawn "spotify")
+  , ((controlMask .|. modMask, xK_j ), spawn "urxvt hold -e julia -p 8 --project=/home/dreuter/Github/julia-paths")
+  , ((controlMask .|. modMask, xK_m ), spawn "urxvt hold -e matlab -nojvm -nodisplay -nosplash")
+  , ((controlMask .|. modMask, xK_v ), spawn "urxvt hold -e sudo openvpn /home/dreuter/.client.ovpn")
+  , ((controlMask .|. modMask, xK_Return ), spawn "urxvt")
   
   -- CONTROL + ALT KEYS
-  , ((controlMask .|. mod1Mask , xK_a ), spawn $ "xfce4-appfinder")
-  , ((controlMask .|. mod1Mask , xK_b ), spawn $ "thunar")
-  , ((controlMask .|. mod1Mask , xK_c ), spawn $ "code")
-  , ((controlMask .|. mod1Mask , xK_e ), spawn $ "evolution")
-  , ((controlMask .|. mod1Mask , xK_f ), spawn $ "firefox")
-  , ((controlMask .|. mod1Mask , xK_g ), spawn $ "chromium -no-default-browser-check")
-  , ((controlMask .|. mod1Mask , xK_i ), spawn $ "nitrogen")
-  , ((controlMask .|. mod1Mask , xK_k ), spawn $ "slimlock")
-  , ((controlMask .|. mod1Mask , xK_m ), spawn $ "xfce4-settings-manager")
-  , ((controlMask .|. mod1Mask , xK_o ), spawn $ "$HOME/.xmonad/scripts/compton-toggle.sh")
-  , ((controlMask .|. mod1Mask , xK_p ), spawn $ "pamac-manager")
-  , ((controlMask .|. mod1Mask , xK_r ), spawn $ "rofi-theme-selector")
-  , ((controlMask .|. mod1Mask , xK_s ), spawn $ "spotify")
-  , ((controlMask .|. mod1Mask , xK_t ), spawn $ "urxvt")
-  , ((controlMask .|. mod1Mask , xK_u ), spawn $ "pavucontrol")
-  , ((controlMask .|. mod1Mask , xK_v ), spawn $ "urxvt hold -e sudo openvpn /home/dreuter/client.ovpn")
-  , ((controlMask .|. mod1Mask , xK_w ), spawn $ "catfish")
-  , ((controlMask .|. mod1Mask , xK_Return ), spawn $ "urxvt")
+  , ((controlMask .|. mod1Mask , xK_a ), spawn "xfce4-appfinder")
+  , ((controlMask .|. mod1Mask , xK_b ), spawn "thunar")
+  , ((controlMask .|. mod1Mask , xK_c ), spawn "vscodium")
+  , ((controlMask .|. mod1Mask , xK_e ), spawn "evolution")
+  , ((controlMask .|. mod1Mask , xK_f ), spawn "firefox")
+  , ((controlMask .|. mod1Mask , xK_d ), spawn "firefox-developer-edition")
+  , ((controlMask .|. mod1Mask , xK_g ), spawn "chromium -no-default-browser-check")
+  , ((controlMask .|. mod1Mask , xK_i ), spawn "nitrogen")
+  , ((controlMask .|. mod1Mask , xK_k ), spawn "slimlock")
+  , ((controlMask .|. mod1Mask , xK_m ), spawn "xfce4-settings-manager")
+  , ((controlMask .|. mod1Mask , xK_o ), spawn "$HOME/.xmonad/scripts/compton-toggle.sh")
+  , ((controlMask .|. mod1Mask , xK_p ), spawn "pamac-manager")
+  , ((controlMask .|. mod1Mask , xK_r ), spawn "rofi-theme-selector")
+  , ((controlMask .|. mod1Mask , xK_s ), spawn "spotify")
+  , ((controlMask .|. mod1Mask , xK_t ), spawn "urxvt")
+  , ((controlMask .|. mod1Mask , xK_u ), spawn "pavucontrol")
+  , ((controlMask .|. mod1Mask , xK_v ), spawn "urxvt hold -e sudo openvpn /home/dreuter/.client.ovpn")
+  , ((controlMask .|. mod1Mask , xK_w ), spawn "catfish")
+  , ((controlMask .|. mod1Mask , xK_Return ), spawn "urxvt")
 
   -- ALT + ... KEYS
-  --, ((mod1Mask, xK_f), spawn $ "variety -f" )
-  --, ((mod1Mask, xK_n), spawn $ "variety -n" )
-  --, ((mod1Mask, xK_p), spawn $ "variety -p" )
-  , ((mod1Mask, xK_r), spawn $ "xmonad --restart" )
-  --, ((mod1Mask, xK_t), spawn $ "variety -t" )
-  --, ((mod1Mask, xK_Up), spawn $ "variety --pause" )
-  --, ((mod1Mask, xK_Down), spawn $ "variety --resume" )
-  --, ((mod1Mask, xK_Left), spawn $ "variety -p" )
-  --, ((mod1Mask, xK_Right), spawn $ "variety -n" )
-  , ((mod1Mask, xK_F2), spawn $ "gmrun" )
-  , ((mod1Mask, xK_F3), spawn $ "xfce4-appfinder" )
-  , ((mod1Mask, xK_s), spawn $ "setxkbmap se")
-  , ((mod1Mask, xK_a), spawn $ "setxkbmap us")
+  --, ((mod1Mask, xK_f), spawn "variety -f" )
+  --, ((mod1Mask, xK_n), spawn "variety -n" )
+  --, ((mod1Mask, xK_p), spawn "variety -p" )
+  , ((mod1Mask, xK_r), spawn "xmonad --restart" )
+  --, ((mod1Mask, xK_t), spawn "variety -t" )
+  --, ((mod1Mask, xK_Up), spawn "variety --pause" )
+  --, ((mod1Mask, xK_Down), spawn "variety --resume" )
+  --, ((mod1Mask, xK_Left), spawn "variety -p" )
+  --, ((mod1Mask, xK_Right), spawn "variety -n" )
+  , ((mod1Mask, xK_F2), spawn "gmrun" )
+  , ((mod1Mask, xK_F3), spawn "xfce4-appfinder" )
+  , ((mod1Mask, xK_s), spawn "setxkbmap se")
+  , ((mod1Mask, xK_a), spawn "setxkbmap us")
 
   --VARIETY KEYS WITH PYWAL
-  
-  --, ((mod1Mask .|. shiftMask , xK_f ), spawn $ "variety -f && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&")
-  --, ((mod1Mask .|. shiftMask , xK_n ), spawn $ "variety -n && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&")
-  --, ((mod1Mask .|. shiftMask , xK_p ), spawn $ "variety -p && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&")
-  --, ((mod1Mask .|. shiftMask , xK_t ), spawn $ "variety -t && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&")
-  --, ((mod1Mask .|. shiftMask , xK_u ), spawn $ "wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&")
+  --, ((mod1Mask .|. shiftMask , xK_f ), spawn "variety -f && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&")
+  --, ((mod1Mask .|. shiftMask , xK_n ), spawn "variety -n && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&")
+  --, ((mod1Mask .|. shiftMask , xK_p ), spawn "variety -p && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&")
+  --, ((mod1Mask .|. shiftMask , xK_t ), spawn "variety -t && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&")
+  --, ((mod1Mask .|. shiftMask , xK_u ), spawn "wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&")
 
   --CONTROL + SHIFT KEYS
 
-  , ((controlMask .|. shiftMask , xK_Escape ), spawn $ "xfce4-taskmanager")
-  , ((controlMask .|. shiftMask , xK_j ), spawn $ "urxvt hold -e julia -p 8 --project=/home/dreuter/Github/julia-paths")
-  , ((controlMask .|. shiftMask , xK_m ), spawn $ "urxvt hold -e matlab -nojvm -nodisplay -nosplash")
-  , ((controlMask .|. shiftMask , xK_p ), spawn $ "urxvt hold -e python")
-  , ((controlMask .|. shiftMask , xK_h ), spawn $ "urxvt hold -e ghci")
-  , ((controlMask .|. shiftMask , xK_i ), spawn $ "urxvt hold -e jshell")
-  , ((controlMask .|. shiftMask , xK_r ), spawn $ "urxvt hold -e R")
+  , ((controlMask .|. shiftMask , xK_Escape ), spawn "xfce4-taskmanager")
+  , ((controlMask .|. shiftMask , xK_j ), spawn "urxvt hold -e julia -p 8 --project=/home/dreuter/Github/julia-paths")
+  , ((controlMask .|. shiftMask , xK_m ), spawn "urxvt hold -e matlab -nojvm -nodisplay -nosplash")
+  , ((controlMask .|. shiftMask , xK_p ), spawn "urxvt hold -e /home/dreuter/.julia/conda/3/bin/python")
+  , ((controlMask .|. shiftMask , xK_h ), spawn "urxvt hold -e ghci")
+  , ((controlMask .|. shiftMask , xK_i ), spawn "urxvt hold -e jshell")
+  , ((controlMask .|. shiftMask , xK_r ), spawn "urxvt hold -e R")
 
   --SCREENSHOTS
-
-  , ((0, xK_Print), spawn $ "scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")
-  , ((controlMask, xK_Print), spawn $ "xfce4-screenshooter" )
-  , ((controlMask .|. shiftMask , xK_Print ), spawn $ "gnome-screenshot -i")
-
+  , ((0, xK_Print), spawn "scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")
+  , ((controlMask, xK_Print), spawn "xfce4-screenshooter" )
+  , ((controlMask .|. shiftMask , xK_Print ), spawn "gnome-screenshot -i")
 
   --MULTIMEDIA KEYS
-
   -- Mute volume
-  , ((0, xF86XK_AudioMute), spawn $ "amixer -q set Master toggle")
-
+  , ((0, xF86XK_AudioMute), spawn "amixer -q set Master toggle")
   -- Decrease volume
-  , ((0, xF86XK_AudioLowerVolume), spawn $ "amixer -q set Master 5%-")
-
+  , ((0, xF86XK_AudioLowerVolume), spawn "amixer -q set Master 5%-")
   -- Increase volume
-  , ((0, xF86XK_AudioRaiseVolume), spawn $ "amixer -q set Master 5%+")
-
+  , ((0, xF86XK_AudioRaiseVolume), spawn "amixer -q set Master 5%+")
   -- Increase brightness
-  , ((0, xF86XK_MonBrightnessUp),  spawn $ "xbacklight -inc 5")
-
+  , ((0, xF86XK_MonBrightnessUp),  spawn "xbacklight -inc 5")
   -- Decrease brightness
-  , ((0, xF86XK_MonBrightnessDown), spawn $ "xbacklight -dec 5")
-
-  , ((0, xF86XK_AudioPlay), spawn $ "mpc toggle")
-  , ((0, xF86XK_AudioNext), spawn $ "mpc next")
-  , ((0, xF86XK_AudioPrev), spawn $ "mpc prev")
-  , ((0, xF86XK_AudioStop), spawn $ "mpc stop")
-
---  , ((0, xF86XK_AudioPlay), spawn $ "playerctl play-pause")
---  , ((0, xF86XK_AudioNext), spawn $ "playerctl next")
---  , ((0, xF86XK_AudioPrev), spawn $ "playerctl previous")
---  , ((0, xF86XK_AudioStop), spawn $ "playerctl stop")
-
+  , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 5")
+  , ((0, xF86XK_AudioPlay), spawn "mpc toggle")
+  , ((0, xF86XK_AudioNext), spawn "mpc next")
+  , ((0, xF86XK_AudioPrev), spawn "mpc prev")
+  , ((0, xF86XK_AudioStop), spawn "mpc stop")
+--  , ((0, xF86XK_AudioPlay), spawn "playerctl play-pause")
+--  , ((0, xF86XK_AudioNext), spawn "playerctl next")
+--  , ((0, xF86XK_AudioPrev), spawn "playerctl previous")
+--  , ((0, xF86XK_AudioStop), spawn "playerctl stop")
 
   --------------------------------------------------------------------
   --  XMONAD LAYOUT KEYS
 
   -- Cycle through the available layout algorithms.
   , ((modMask, xK_space), sendMessage NextLayout)
-
   --Focus selected desktop
   , ((mod1Mask, xK_Tab), nextWS)
-
   --Focus selected desktop
   , ((modMask, xK_Tab), nextWS)
-
   --Focus selected desktop
   , ((controlMask .|. mod1Mask , xK_Left ), prevWS)
-
   --Focus selected desktop
   , ((controlMask .|. mod1Mask , xK_Right ), nextWS)
-
   --  Reset the layouts on the current workspace to default.
   , ((modMask .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf)
-
-
   -- Move focus to the next window.
   , ((modMask, xK_j), windows W.focusDown)
-
   -- Move focus to the previous window.
   , ((modMask, xK_k), windows W.focusUp  )
-
   -- Move focus to the next window.
   , ((modMask, xK_Right), windows W.focusDown)
-
   -- Move focus to the previous window.
   , ((modMask, xK_Left), windows W.focusUp  )
-
   -- Move focus to the master window.
   , ((modMask .|. shiftMask, xK_m), windows W.focusMaster  )
-
   -- Swap the focused window with the next window.
   , ((modMask .|. shiftMask, xK_j), windows W.swapDown  )
-
   -- Swap the focused window with the previous window.
   , ((modMask .|. shiftMask, xK_k), windows W.swapUp    )
-
-
   -- Shrink the master area.
   , ((controlMask .|. shiftMask , xK_Left), sendMessage Shrink)
-
   -- Expand the master area.
   , ((controlMask .|. shiftMask , xK_Right), sendMessage Expand)
-
   -- Push window back into tiling.
   , ((controlMask .|. shiftMask , xK_t), withFocused $ windows . W.sink)
-
   -- Swap the focused window with the previous window.
   , ((controlMask .|. modMask, xK_Left), windows W.swapUp  )
-
   -- Swap the focused window with the next window.
   , ((controlMask .|. modMask, xK_Right), windows W.swapDown  )
-
   -- Increment the number of windows in the master area.
   , ((controlMask .|. modMask, xK_Up), sendMessage (IncMasterN 1))
-
   -- Decrement the number of windows in the master area.
   , ((controlMask .|. modMask, xK_Down), sendMessage (IncMasterN (-1)))
-
+  
   ]
+  
   ++
 
   -- mod-[1..9], Switch to workspace N
@@ -346,8 +321,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
       , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)
       , (\i -> W.greedyView i . W.shift i, shiftMask)]]
-     
+
+  
   ++
+
   -- ctrl-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
   -- ctrl-shift-{w,e,r}, Move client to screen 1, 2, or 3
   [((m .|. controlMask, key), screenWorkspace sc >>= flip whenJust (windows . f))

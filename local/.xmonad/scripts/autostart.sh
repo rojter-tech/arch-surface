@@ -32,7 +32,7 @@ feh --bg-scale ~/.xmonad/matrix_code-wallpaper-3000x2000.jpg &
 (conky -c $HOME/.xmonad/scripts/system-overview) &
 
 #starting utility applications at boot time
-run variety &
+#run variety &
 run nm-applet &
 run pamac-tray &
 run xfce4-power-manager &
@@ -57,3 +57,5 @@ compton --config $HOME/.xmonad/scripts/compton.conf &
 #run dropbox &
 #run "insync start" &
 #run "ckb-next -b" &
+
+(sleep 20; sudo mount -a) &
