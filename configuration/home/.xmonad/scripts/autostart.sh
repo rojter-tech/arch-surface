@@ -10,10 +10,11 @@ function run {
 #Set your native resolution IF it does not exist in xrandr
 #More info in the script
 #run $HOME/.xmonad/scripts/set-screen-resolution-in-virtualbox.sh
-run $HOME/.scripts/connectwbl.sh
-run $HOME/.scripts/start-servers.sh
+(run $HOME/.scripts/connectwbl.sh) &
+(run $HOME/.scripts/start-servers.sh) &
 
 #Find out your monitor name with xrandr or arandr (save and you get this line)
+xrandr --output eDP1 --primary --mode 3240x2160 --pos 0x0 --rotate normal --output DP1 --off --output HDMI1 --off --output VIRTUAL1 --off
 #xrandr --output VGA-1 --primary --mode 1360x768 --pos 0x0 --rotate normal
 #xrandr --output DP2 --primary --mode 1920x1080 --rate 60.00 --output LVDS1 --off &
 #xrandr --output LVDS1 --mode 1366x768 --output DP3 --mode 1920x1080 --right-of LVDS1
@@ -28,7 +29,7 @@ run $HOME/.scripts/start-servers.sh
 xsetroot -cursor_name left_ptr &
 
 #Some ways to set your wallpaper besides variety or nitrogen
-feh --bg-scale ~/.xmonad/matrix_code-wallpaper-3000x2000.jpg &
+feh --bg-scale $HOME/.xmonad/matrix_code-wallpaper-3000x2000.jpg &
 #start the conky to learn the shortcuts
 (conky -c $HOME/.xmonad/scripts/system-overview) &
 
