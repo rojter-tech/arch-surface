@@ -233,9 +233,9 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
   , ((controlMask .|. shiftMask , xK_r ), spawn "urxvt hold -e R")
 
   --SCREENSHOTS
-  , ((0, xK_Print), spawn "scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")
-  , ((controlMask, xK_Print), spawn "xfce4-screenshooter" )
-  , ((controlMask .|. shiftMask , xK_Print ), spawn "gnome-screenshot -i")
+  , ((0, xK_Print), spawn "import png:- | xclip -selection clipboard -t image/png")
+  , ((controlMask, xK_Print), spawn "gnome-screenshot -i")
+  , ((controlMask .|. shiftMask , xK_Print ), spawn "scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)/Screenshots'")
 
   --MULTIMEDIA KEYS
   -- Mute volume
@@ -291,7 +291,7 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
   -- Expand the master area.
   , ((controlMask .|. shiftMask , xK_Right), sendMessage Expand)
   -- Push window back into tiling.
-  , ((controlMask .|. shiftMask , xK_t), withFocused $ windows . W.sink)
+  , ((controlMask .|. shiftMask , xK_Return), withFocused $ windows . W.sink)
   -- Swap the focused window with the previous window.
   , ((controlMask .|. modMask, xK_Left), windows W.swapUp  )
   -- Swap the focused window with the next window.
