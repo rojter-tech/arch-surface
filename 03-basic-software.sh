@@ -1,4 +1,5 @@
 #!/bin/bash
+git clone https://aur.archlinux.org/yay.git ~/sources/yay
 cd ~/sources/yay
 makepkg -sci
 yay --editmenu --nodiffmenu --save
@@ -42,6 +43,8 @@ sudo pacman -S bluez bluez-utils bluez-libs \
 pulseaudio pulseaudio-bluetooth pulseaudio-equalizer \
 pulseaudio-alsa alsa-utils alsa-plugins alsa-lib pavucontrol \
 pulseaudio-bluetooth bluez blueberry --noconfirm --needed
+amixer -c 0 sset 'Auto-Mute Mode' Disabled
+sudo alsactl store
 
 sudo systemctl enable bluetooth.service
 sudo systemctl start bluetooth.service
@@ -54,8 +57,8 @@ yay -S browsh gksu inxi-git --answerclean N --answeredit N --noconfirm --needed
 sudo pacman -S atool highlight elinks mediainfo w3m \
 ffmpegthumbnailer mupdf --noconfirm --needed
 
-yay -S firefox-nightly firefox-beta firefox-developer-edition spotify  \
-visual-studio-code-bin python-ptvsd --answerclean N --answeredit N --noconfirm --needed
+yay -S firefox-nightly firefox-developer-edition visual-studio-code-bin \
+python-ptvsd --answerclean N --answeredit N --noconfirm --needed
 sudo pacman -S gimp chromium firefox vlc --noconfirm --needed
 
 yay -S urxvt-font-size-git python-pdftotext --answerclean N --answeredit N --noconfirm --needed
