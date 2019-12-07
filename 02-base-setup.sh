@@ -6,17 +6,34 @@ useradd -m -g users \
   -G wheel,storage,power,docker,autologin,audio,bumblebee \
   -s /bin/bash dreuter
 passwd dreuter
+
+# Add user to wheel group
 usermod -a -G wheel,storage,power,docker,autologin,audio,bumblebee dreuter
-vim /etc/sudoers
-#change %wheel ALL=(ALL) NOPASSWD: ALL
+
+# Change access to wheel group
+grep "# %wheel ALL=(ALL) NOPASSWD: ALL" /etc/sudoers && \
+sed -i \
+  -e 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/g' \
+  /etc/sudoers && \
+grep "%wheel ALL=(ALL) NOPASSWD: ALL" /etc/sudoers
+
 su dreuter
 
-sudo pacman -Syyuu --noconfirm --needed
-sudo pacman -R vim
-sudo pacman -S p7zip unzip docker gvim \
+sudo pacman -Syyuu p7zip unzip docker gvim \
   git rsync bash-completion wget which \
   reflector --noconfirm --needed
-sudo reflector --verbose --latest 200 --number 10 --sort rate --save /etc/pacman.d/mirrorlist
-sudo mv /usr/bin/vi /usr/bin/vi.bak
-sudo ln -s /usr/bin/vim /usr/bin/vi
 sudo systemctl enable docker
+
+sudo reflector --verbose --latest 200 --number 10 --sort rate --save 
+echo 'Server = http://ftp.acc.umu.se/mirror/archlinux/$repo/os/$arch' | sudo tee -a /etc/pacman.d/mirrorlist
+echo 'Server = https://ftp.acc.umu.se/mirror/archlinux/$repo/os/$arch >> /etc/pacman.d/mirrorlist' | sudo tee -a /etc/pacman.d/mirrorlist
+echo 'Server = http://archlinux.dynamict.se/$repo/os/$arch >> /etc/pacman.d/mirrorlist' | sudo tee -a /etc/pacman.d/mirrorlist
+echo 'Server = https://archlinux.dynamict.se/$repo/os/$arch >> /etc/pacman.d/mirrorlist' | sudo tee -a /etc/pacman.d/mirrorlist
+echo 'Server = http://ftp.lysator.liu.se/pub/archlinux/$repo/os/$arch >> /etc/pacman.d/mirrorlist' | sudo tee -a /etc/pacman.d/mirrorlist
+echo 'Server = https://ftp.lysator.liu.se/pub/archlinux/$repo/os/$arch >> /etc/pacman.d/mirrorlist' | sudo tee -a /etc/pacman.d/mirrorlist
+echo 'Server = http://ftp.myrveln.se/pub/linux/archlinux/$repo/os/$arch >> /etc/pacman.d/mirrorlist' | sudo tee -a /etc/pacman.d/mirrorlist
+echo 'Server = https://ftp.myrveln.se/pub/linux/archlinux/$repo/os/$arch >> /etc/pacman.d/mirrorlist' | sudo tee -a /etc/pacman.d/mirrorlist
+echo 'Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch >> /etc/pacman.d/mirrorlist' | sudo tee -a /etc/pacman.d/mirrorlist
+
+cat /etc/pacman.d/mirrorlist
+sudo ln -s /usr/bin/vim /usr/bin/vi
