@@ -8,6 +8,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 systemctl enable dhcpcd.service
 systemctl enable sshd.service
+systemctl enable NetworkManager.service
 mkdir /boot/grub
 os-prober
 grub-mkconfig -o /boot/grub/grub.cfg
