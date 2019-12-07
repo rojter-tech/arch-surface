@@ -1,5 +1,5 @@
 #!/bin/bash
-pacstrap /mnt base base-devel openssh iw wpa_supplicant dialog terminus-font
+pacstrap /mnt base base-devel openssh iw wpa_supplicant dialog terminus-font dhcpcd
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 ln -sf /usr/share/zoneinfo/Europe/Stockholm /etc/localtime 
