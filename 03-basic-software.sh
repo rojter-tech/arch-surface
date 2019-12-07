@@ -1,4 +1,8 @@
 #!/bin/bash
+# Logged in to user account from here
+cd ~
+mkdir sources
+# Setting up yay and packer package for aur repository
 git clone https://aur.archlinux.org/yay.git ~/sources/yay
 cd ~/sources/yay
 makepkg -sci
@@ -11,6 +15,7 @@ mv PKGBUILD\?h\=packer /tmp/packer/PKGBUILD
 cd /tmp/packer
 makepkg -i /tmp/packer --noconfirm
 [ -d /tmp/packer ] && rm -rf /tmp/packer
+cd ~ && clear
 
 grep "COMPRESSXZ=(xz" /etc/makepkg.conf && \
 grep "#MAKEFLAGS=\"-j" /etc/makepkg.conf && \
@@ -23,21 +28,36 @@ grep "Color" /etc/pacman.conf && \
 sudo sed -i -e 's/#Color/Color/g' /etc/pacman.conf && \
 grep "Color" /etc/pacman.conf
 
-sudo pacman -Syyuu --noconfirm --needed && \
-yay -Syyuu --noconfirm --needed
-yay -S nvidia-full-beta-all nvidia-utils-full-beta-all nvidia-settings-full-beta-all \
---answerclean N --answeredit N --noconfirm --needed
-sudo pacman -S xf86-video-intel xorg-server xorg-apps xorg-twm \
+sudo pacman -S nvidia nvidia-utils nvidia-settings xf86-video-intel --noconfirm --needed && \
+grep '"yes"' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf && \
+sudo sed -i -e 's/"yes"/"no"/g' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf && \
+grep '"no"' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
+
+## From here on it depends on taste and preferences for the moment
+
+# GNOME
+sudo pacman -S gnome gnome-extra gnome-shell gdm --noconfirm --needed
+sudo systemctl enable gdm.service
+yay -S gnome-shell-extensions gnome-shell-extension-dash-to-dock \
+  --answerclean N --answeredit N --noconfirm --needed
+
+# i3
+sudo pacman -S xorg-server xorg-apps xorg-twm \
 xorg-xinit mesa i3-gaps i3blocks i3lock i3status numlockx \
 xterm rxvt-unicode --noconfirm --needed
 
+# lightdm
 sudo pacman -S lightdm lightdm-gtk-greeter --noconfirm --needed
 
+# Utils
+
+### Fonts
 sudo pacman -S noto-fonts ttf-ubuntu-font-family \
 ttf-dejavu ttf-liberation ttf-droid \
 ttf-inconsolata ttf-roboto terminus-font \
 ttf-font-awesome --noconfirm --needed
 
+### Sound and bluetooth
 yay -S bluez-firmware --answerclean N --answeredit N --noconfirm --needed
 sudo pacman -S bluez bluez-utils bluez-libs \
 pulseaudio pulseaudio-bluetooth pulseaudio-equalizer \
@@ -47,9 +67,8 @@ amixer -c 0 sset 'Auto-Mute Mode' Disabled
 sudo alsactl store
 
 sudo systemctl enable bluetooth.service
-sudo systemctl start bluetooth.service
-sudo systemctl daemon-reload
 
+### Command line utilities
 sudo pacman -S rxvt-unicode ranger rofi conky dmenu  \
 urxvt-perls perl-anyevent-i3 perl-json-xs --noconfirm --needed
 
