@@ -1,5 +1,6 @@
 #!/bin/bash
-pacstrap /mnt base base-devel linux linux-firmware openssh dhcpcd iw wpa_supplicant networkmanager dialog terminus-font 
+pacstrap /mnt base base-devel linux linux-firmware openssh \
+  dhcpcd iw wpa_supplicant networkmanager dialog terminus-font
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 ln -sf /usr/share/zoneinfo/Europe/Stockholm /etc/localtime 
