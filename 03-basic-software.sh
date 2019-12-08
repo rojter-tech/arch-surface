@@ -43,7 +43,8 @@ echo "Server = https://tmsp.io/fs/repos/arch/\$repo/" | sudo tee -a /etc/pacman.
 yay -S libwacom-surface surface-dtx-daemon surface-control \
   linux-firmware-surface-book-2 --answerclean N --answeredit N --noconfirm --needed
 sudo pacman -Syyuu --noconfirm
-sudo pacman -S linux-surface linux-surface-docs linux-surface-headers
+sudo pacman -S linux-surface linux-surface-docs linux-surface-headers \
+  linux-surface-secureboot-mok --noconfirm --needed
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # Install NVIDIA and bumblebee
