@@ -40,7 +40,7 @@ sudo pacman-key --finger luzmaximilian@gmail.com
 sudo pacman-key --lsign-key luzmaximilian@gmail.com
 echo "[linux-surface]" | sudo tee -a /etc/pacman.conf
 echo "Server = https://tmsp.io/fs/repos/arch/\$repo/" | sudo tee -a /etc/pacman.conf
-yay -S libwacom-surface surface-dtx-daemon surface-control \
+yay -S mokutil-git libwacom-surface surface-dtx-daemon surface-control \
   linux-firmware-surface-book-2 --answerclean N --answeredit N --noconfirm --needed
 sudo pacman -Syyuu --noconfirm
 sudo pacman -S linux-surface linux-surface-docs linux-surface-headers \
