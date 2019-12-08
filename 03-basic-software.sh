@@ -41,9 +41,9 @@ wget -qO - https://raw.githubusercontent.com/qzed/linux-surface/master/keys/qzed
     | sudo pacman-key --add -
 sudo pacman-key --finger luzmaximilian@gmail.com
 sudo pacman-key --lsign-key luzmaximilian@gmail.com
-yay -S mokutil-git --answerclean N --answeredit N --noconfirm --needed
+yay -S mokutil-git rust --answerclean N --answeredit N --noconfirm --needed
 yay -S libwacom-surface surface-dtx-daemon surface-control \
-  linux-firmware-surface-book-2 --answerclean N --answeredit N --noconfirm --needed
+  linux-firmware-surface-book-2 surface-control --answerclean N --answeredit N --noconfirm --needed
 sudo pacman -Syyuu --noconfirm
 sudo pacman -S linux-surface linux-surface-docs linux-surface-headers \
   linux-surface-secureboot-mok --noconfirm --needed
