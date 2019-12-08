@@ -1,5 +1,6 @@
 #!/bin/bash
 # Logged in to user account from here
+
 cd ~
 mkdir sources
 # Setting up yay and packer package for aur repository
@@ -30,23 +31,22 @@ grep "Color" /etc/pacman.conf && \
 sudo sed -i -e 's/#Color/Color/g' /etc/pacman.conf && \
 grep "Color" /etc/pacman.conf
 
-# Include Surface repository
+# Include Surface repository and install hardware specific drivers
 wget -qO - https://raw.githubusercontent.com/qzed/linux-surface/master/keys/qzed.asc \
     | sudo pacman-key --add -
 sudo pacman-key --finger luzmaximilian@gmail.com
 sudo pacman-key --lsign-key luzmaximilian@gmail.com
 echo "[linux-surface]" | sudo tee -a /etc/pacman.conf
 echo "Server = https://tmsp.io/fs/repos/arch/$repo/" | sudo tee -a /etc/pacman.conf
-yay -S libwacom-surface surface-dtx-daemon surface-control
+yay -S libwacom-surface surface-dtx-daemon surface-control \
+  linux-firmware-surface-book-2 --answerclean N --answeredit N --noconfirm --needed
 sudo pacman -Syyuu
 
-# nvidia graphics
-sudo pacman -S nvidia-dkms nvidia-utils nvidia-settings xf86-video-intel --noconfirm --needed && \
-grep '"yes"' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf && \
-sudo sed -i -e 's/"yes"/"no"/g' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf && \
+# Install NVIDIA and bumblebee
+sudo pacman -S nvidia-dkms nvidia-utils nvidia-settings bumblebee mesa --noconfirm --needed
+grep '"yes"' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
+sudo sed -i -e 's/"yes"/"no"/g' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
 grep '"no"' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
-
-
 
 ## From here on it depends on taste and preferences for the moment
 
@@ -58,33 +58,20 @@ yay -S gnome-shell-extensions gnome-shell-extension-dash-to-dock \
 sudo pacman -R gnome-terminal --noconfirm
 yay -S gnome-terminal-transparency --answerclean N --answeredit N --noconfirm --needed
 
-# i3
-sudo pacman -S xorg-server xorg-apps xorg-twm \
-xorg-xinit mesa i3-gaps i3blocks i3lock i3status numlockx \
-xterm rxvt-unicode --noconfirm --needed
-
-# LightDM
-sudo pacman -S lightdm lightdm-gtk-greeter --noconfirm --needed
-grep 'autologin-user=\|autologin-session=\|greeter-session=' /etc/lightdm/lightdm.conf && \
-sudo sed -i 's/#autologin-user=/autologin-user=dreuter/g' /etc/lightdm/lightdm.conf && \
-sudo sed -i 's/#autologin-session=/autologin-session=i3/g' /etc/lightdm/lightdm.conf && \
-sudo sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-gtk-greeter/g' /etc/lightdm/lightdm.conf && \
-grep 'autologin-user=\|autologin-session=\|greeter-session=' /etc/lightdm/lightdm.conf
-
 # Utils
 
 ### Fonts
 sudo pacman -S noto-fonts ttf-ubuntu-font-family \
-ttf-dejavu ttf-liberation ttf-droid \
-ttf-inconsolata ttf-roboto terminus-font \
-ttf-font-awesome --noconfirm --needed
+  ttf-dejavu ttf-liberation ttf-droid \
+  ttf-inconsolata ttf-roboto terminus-font \
+  ttf-font-awesome --noconfirm --needed
 
 ### Sound and bluetooth
 yay -S bluez-firmware --answerclean N --answeredit N --noconfirm --needed
 sudo pacman -S bluez bluez-utils bluez-libs \
-pulseaudio pulseaudio-bluetooth pulseaudio-equalizer \
-pulseaudio-alsa alsa-utils alsa-plugins alsa-lib pavucontrol \
-pulseaudio-bluetooth bluez blueberry --noconfirm --needed
+  pulseaudio pulseaudio-bluetooth pulseaudio-equalizer \
+  pulseaudio-alsa alsa-utils alsa-plugins alsa-lib pavucontrol \
+  pulseaudio-bluetooth bluez blueberry --noconfirm --needed
 sudo systemctl enable bluetooth.service
 
 ### Command line utilities
@@ -120,8 +107,11 @@ echo "options snd_mia index=0" | sudo tee -a /etc/modprobe.d/alsa-base.conf
 echo "options snd_hda_intel index=1" | sudo tee -a /etc/modprobe.d/alsa-base.conf
 cat /etc/modprobe.d/alsa-base.conf
 
-### Fix drivers and secure boot
-pacman -S sbsigntools --noconfirm --needed
+
+############################################################
+
+# Fix drivers and secure boot
+sudo pacman -S sbsigntools --noconfirm --needed
 yay -S shim-signed aic94xx-firmware wd719x-firmware --answerclean N --answeredit N --noconfirm --needed
 sudo cp /usr/share/shim-signed/shimx64.efi /boot/efi/EFI/GRUB/BOOTX64.efi
 sudo cp /usr/share/shim-signed/mmx64.efi /boot/efi/EFI/GRUB/
@@ -130,5 +120,21 @@ sudo sbsign \
 	--cert /boot/efi/keys/ubuntu.pem \
 	/boot/efi/EFI/GRUB/grubx64.efi \
 	--output /boot/efi/EFI/GRUB/grubx64.efi
+
+############################################################
+
+
+# i3
+sudo pacman -S xorg-server xorg-apps xorg-twm \
+xorg-xinit mesa i3-gaps i3blocks i3lock i3status numlockx \
+xterm rxvt-unicode --noconfirm --needed
+
+# LightDM
+sudo pacman -S lightdm lightdm-gtk-greeter --noconfirm --needed
+grep 'autologin-user=\|autologin-session=\|greeter-session=' /etc/lightdm/lightdm.conf && \
+sudo sed -i 's/#autologin-user=/autologin-user=dreuter/g' /etc/lightdm/lightdm.conf && \
+sudo sed -i 's/#autologin-session=/autologin-session=i3/g' /etc/lightdm/lightdm.conf && \
+sudo sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-gtk-greeter/g' /etc/lightdm/lightdm.conf && \
+grep 'autologin-user=\|autologin-session=\|greeter-session=' /etc/lightdm/lightdm.conf
 
 sudo telinit 6
