@@ -30,11 +30,23 @@ grep "Color" /etc/pacman.conf && \
 sudo sed -i -e 's/#Color/Color/g' /etc/pacman.conf && \
 grep "Color" /etc/pacman.conf
 
+# Include Surface repository
+wget -qO - https://raw.githubusercontent.com/qzed/linux-surface/master/keys/qzed.asc \
+    | sudo pacman-key --add -
+sudo pacman-key --finger luzmaximilian@gmail.com
+sudo pacman-key --lsign-key luzmaximilian@gmail.com
+echo "[linux-surface]" | sudo tee -a /etc/pacman.conf
+echo "Server = https://tmsp.io/fs/repos/arch/$repo/" | sudo tee -a /etc/pacman.conf
+yay -S libwacom-surface surface-dtx-daemon surface-control
+sudo pacman -Syyuu
+
 # nvidia graphics
-sudo pacman -S nvidia nvidia-utils nvidia-settings xf86-video-intel --noconfirm --needed && \
+sudo pacman -S nvidia-dkms nvidia-utils nvidia-settings xf86-video-intel --noconfirm --needed && \
 grep '"yes"' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf && \
 sudo sed -i -e 's/"yes"/"no"/g' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf && \
 grep '"no"' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
+
+
 
 ## From here on it depends on taste and preferences for the moment
 
