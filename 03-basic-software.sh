@@ -105,4 +105,15 @@ echo "options snd_mia index=0" | sudo tee -a /etc/modprobe.d/alsa-base.conf
 echo "options snd_hda_intel index=1" | sudo tee -a /etc/modprobe.d/alsa-base.conf
 cat /etc/modprobe.d/alsa-base.conf
 
+### Fix drivers and secure boot
+pacman -S sbsigntools --noconfirm --needed
+yay -S shim-signed aic94xx-firmware wd719x-firmware --answerclean N --answeredit N --noconfirm --needed
+sudo cp /usr/share/shim-signed/shimx64.efi /boot/efi/EFI/GRUB/BOOTX64.efi
+sudo cp /usr/share/shim-signed/mmx64.efi /boot/efi/EFI/GRUB/
+sudo sbsign \
+  --key /boot/efi/keys/ubuntu.priv \
+	--cert /boot/efi/keys/ubuntu.pem \
+	/boot/efi/EFI/GRUB/grubx64.efi \
+	--output /boot/efi/EFI/GRUB/grubx64.efi
+
 sudo telinit 6
