@@ -81,14 +81,6 @@ sudo pacman -S bluez bluez-utils bluez-libs \
   pulseaudio-bluetooth bluez blueberry --noconfirm --needed
 sudo systemctl enable bluetooth.service
 
-### Command line utilities
-sudo pacman -S rxvt-unicode ranger rofi conky dmenu  \
-urxvt-perls perl-anyevent-i3 perl-json-xs --noconfirm --needed
-yay -S browsh gksu inxi-git --answerclean N --answeredit N --noconfirm --needed
-sudo pacman -S atool highlight elinks mediainfo w3m \
-ffmpegthumbnailer mupdf --noconfirm --needed
-yay -S urxvt-font-size-git python-pdftotext --answerclean N --answeredit N --noconfirm --needed
-
 ### Browsers and code
 sudo pacman -S firefox chromium \
   firefox-developer-edition vlc gimp --noconfirm --needed
@@ -131,6 +123,14 @@ sudo sbsign \
 	--output /boot/efi/EFI/GRUB/grubx64.efi
 
 ############################################################
+
+### Command line utilities
+sudo pacman -S rxvt-unicode ranger rofi conky dmenu  \
+urxvt-perls perl-anyevent-i3 perl-json-xs --noconfirm --needed
+yay -S browsh gksu inxi-git --answerclean N --answeredit N --noconfirm --needed
+sudo pacman -S atool highlight elinks mediainfo w3m \
+ffmpegthumbnailer mupdf --noconfirm --needed
+yay -S urxvt-font-size-git python-pdftotext --answerclean N --answeredit N --noconfirm --needed
 
 
 # i3
