@@ -1,14 +1,18 @@
 #!/bin/bash
 # Assumes complete partition system mounted and 
 # ready, including EFI parition mounted as /boot/efi
-pacstrap /mnt base base-devel linux linux-firmware openssh terminus-font \
-  dhcpcd iw wpa_supplicant networkmanager dialog grub os-prober efibootmgr
+pacstrap /mnt base base-devel linux openssh terminus-font dhcpcd \
+  iw wpa_supplicant networkmanager dialog grub os-prober efibootmgr sbsigntools
 genfstab -U /mnt >> /mnt/etc/fstab
-
 arch-chroot /mnt
+
 systemctl enable dhcpcd.service
 systemctl enable sshd.service
 systemctl enable NetworkManager.service
+
+sed -i -e 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+grep "PermitRootLogin yes" /etc/ssh/sshd_config
+
 mkdir /boot/grub
 os-prober
 grub-mkconfig -o /boot/grub/grub.cfg
