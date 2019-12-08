@@ -24,7 +24,7 @@ sudo pacman -Syyuu p7zip unzip docker gvim \
   reflector --noconfirm --needed
 sudo systemctl enable docker
 
-sudo reflector --verbose --latest 200 --number 10 --sort rate --save 
+sudo reflector --verbose --latest 200 --number 5 --sort rate --save /etc/pacman.d/mirrorlist
 echo 'Server = http://ftp.acc.umu.se/mirror/archlinux/$repo/os/$arch' | sudo tee -a /etc/pacman.d/mirrorlist
 echo 'Server = https://ftp.acc.umu.se/mirror/archlinux/$repo/os/$arch >> /etc/pacman.d/mirrorlist' | sudo tee -a /etc/pacman.d/mirrorlist
 echo 'Server = http://archlinux.dynamict.se/$repo/os/$arch >> /etc/pacman.d/mirrorlist' | sudo tee -a /etc/pacman.d/mirrorlist
@@ -34,6 +34,7 @@ echo 'Server = https://ftp.lysator.liu.se/pub/archlinux/$repo/os/$arch >> /etc/p
 echo 'Server = http://ftp.myrveln.se/pub/linux/archlinux/$repo/os/$arch >> /etc/pacman.d/mirrorlist' | sudo tee -a /etc/pacman.d/mirrorlist
 echo 'Server = https://ftp.myrveln.se/pub/linux/archlinux/$repo/os/$arch >> /etc/pacman.d/mirrorlist' | sudo tee -a /etc/pacman.d/mirrorlist
 echo 'Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch >> /etc/pacman.d/mirrorlist' | sudo tee -a /etc/pacman.d/mirrorlist
-
+sudo pacman -Syyuu
 cat /etc/pacman.d/mirrorlist
+
 sudo ln -s /usr/bin/vim /usr/bin/vi
