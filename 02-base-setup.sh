@@ -38,4 +38,4 @@ cat /etc/pacman.d/mirrorlist
 
 sudo ln -s /usr/bin/vim /usr/bin/vi
 
-telinit 6
+sudo telinit 6
