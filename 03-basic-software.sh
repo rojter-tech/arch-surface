@@ -50,7 +50,7 @@ sudo pacman -S linux-surface linux-surface-docs linux-surface-headers \
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # Install NVIDIA and bumblebee
-sudo pacman -S nvidia-dkms nvidia-utils nvidia-settings bumblebee mesa --noconfirm --needed
+sudo pacman -S nvidia-dkms nvidia-utils nvidia-settings bumblebee mesa mesa-demos --noconfirm --needed
 grep '"yes"' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
 sudo sed -i -e 's/"yes"/"no"/g' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
 grep '"no"' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
