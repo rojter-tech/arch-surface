@@ -5,7 +5,6 @@ groupadd -r docker
 useradd -m -g users \
   -G wheel,storage,power,docker,autologin,audio,bumblebee \
   -s /bin/bash dreuter
-passwd dreuter
 
 # Add user to wheel group
 usermod -a -G wheel,storage,power,docker,autologin,audio,bumblebee dreuter
@@ -17,7 +16,7 @@ sed -i \
   /etc/sudoers && \
 grep "%wheel ALL=(ALL) NOPASSWD: ALL" /etc/sudoers
 
-su dreuter
+passwd dreuter && su dreuter
 
 sudo pacman -Syyuu p7zip unzip docker gvim \
   git rsync bash-completion wget which \
@@ -38,3 +37,5 @@ sudo pacman -Syyuu
 cat /etc/pacman.d/mirrorlist
 
 sudo ln -s /usr/bin/vim /usr/bin/vi
+
+telinit 6
