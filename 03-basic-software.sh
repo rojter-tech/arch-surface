@@ -17,6 +17,7 @@ makepkg -i /tmp/packer --noconfirm
 [ -d /tmp/packer ] && rm -rf /tmp/packer
 cd ~ && clear
 
+# Set up compile parameter
 grep "COMPRESSXZ=(xz" /etc/makepkg.conf && \
 grep "#MAKEFLAGS=\"-j" /etc/makepkg.conf && \
 sudo sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T 8 -z -)/g' /etc/makepkg.conf && \
@@ -24,10 +25,12 @@ sudo sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j8"/g' /etc/makepkg.conf
 grep "COMPRESSXZ=(xz" /etc/makepkg.conf && \
 grep "#MAKEFLAGS=\"-j" /etc/makepkg.conf
 
+# give pacman some color
 grep "Color" /etc/pacman.conf && \
 sudo sed -i -e 's/#Color/Color/g' /etc/pacman.conf && \
 grep "Color" /etc/pacman.conf
 
+# nvidia graphics
 sudo pacman -S nvidia nvidia-utils nvidia-settings xf86-video-intel --noconfirm --needed && \
 grep '"yes"' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf && \
 sudo sed -i -e 's/"yes"/"no"/g' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf && \
@@ -35,7 +38,7 @@ grep '"no"' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
 
 ## From here on it depends on taste and preferences for the moment
 
-# GNOME
+# GNOME and GnomeDM
 sudo pacman -S gnome gnome-extra gnome-shell gdm --noconfirm --needed
 sudo systemctl enable gdm.service
 yay -S gnome-shell-extensions gnome-shell-extension-dash-to-dock \
@@ -48,7 +51,7 @@ sudo pacman -S xorg-server xorg-apps xorg-twm \
 xorg-xinit mesa i3-gaps i3blocks i3lock i3status numlockx \
 xterm rxvt-unicode --noconfirm --needed
 
-# lightdm
+# LightDM
 sudo pacman -S lightdm lightdm-gtk-greeter --noconfirm --needed
 grep 'autologin-user=\|autologin-session=\|greeter-session=' /etc/lightdm/lightdm.conf && \
 sudo sed -i 's/#autologin-user=/autologin-user=dreuter/g' /etc/lightdm/lightdm.conf && \
