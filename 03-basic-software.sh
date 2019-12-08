@@ -115,9 +115,9 @@ sudo cp /usr/share/shim-signed/shimx64.efi /boot/efi/EFI/GRUB/BOOTX64.efi
 sudo cp /usr/share/shim-signed/mmx64.efi /boot/efi/EFI/GRUB/
 sudo sbsign \
   --key /boot/efi/keys/ubuntu.priv \
-	--cert /boot/efi/keys/ubuntu.pem \
-	/boot/efi/EFI/GRUB/grubx64.efi \
-	--output /boot/efi/EFI/GRUB/grubx64.efi
+  --cert /boot/efi/keys/ubuntu.pem \
+  /boot/efi/EFI/GRUB/grubx64.efi \
+  --output /boot/efi/EFI/GRUB/grubx64.efi
 
 ############################################################
 
