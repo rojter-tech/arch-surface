@@ -1,4 +1,7 @@
 #!/bin/bash
+# Include Surface repository
+echo "[linux-surface]" | sudo tee -a /etc/pacman.conf
+echo "Server = https://tmsp.io/fs/repos/arch/\$repo/" | sudo tee -a /etc/pacman.conf
 # Logged in to user account from here
 
 cd ~
@@ -33,14 +36,13 @@ grep "Color" /etc/pacman.conf && \
 sudo sed -i -e 's/#Color/Color/g' /etc/pacman.conf && \
 grep "Color" /etc/pacman.conf
 
-# Include Surface repository and install hardware specific drivers
+#  Install hardware specific drivers
 wget -qO - https://raw.githubusercontent.com/qzed/linux-surface/master/keys/qzed.asc \
     | sudo pacman-key --add -
 sudo pacman-key --finger luzmaximilian@gmail.com
 sudo pacman-key --lsign-key luzmaximilian@gmail.com
-echo "[linux-surface]" | sudo tee -a /etc/pacman.conf
-echo "Server = https://tmsp.io/fs/repos/arch/\$repo/" | sudo tee -a /etc/pacman.conf
-yay -S mokutil-git libwacom-surface surface-dtx-daemon surface-control \
+yay -S mokutil-git --answerclean N --answeredit N --noconfirm --needed
+yay -S libwacom-surface surface-dtx-daemon surface-control \
   linux-firmware-surface-book-2 --answerclean N --answeredit N --noconfirm --needed
 sudo pacman -Syyuu --noconfirm
 sudo pacman -S linux-surface linux-surface-docs linux-surface-headers \
