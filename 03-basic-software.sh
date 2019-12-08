@@ -90,8 +90,10 @@ yay -S visual-studio-code-bin firefox-nightly python-ptvsd \
 sudo pacman -Syyuu --noconfirm --needed && \
 yay -Syyuu --noconfirm --needed
 
-### Fix WiFi
-sudo iw dev wlp1s0 set power_save off # Fix only for this session
+### Fix WiFi and sound only for this session
+sudo iw dev wlp1s0 set power_save off
+amixer -c 0 sset 'Auto-Mute Mode' Disabled
+sudo alsactl store
 
 # Permanent fix
 echo "[connection]" | sudo tee -a /etc/NetworkManager/NetworkManager.conf
@@ -100,14 +102,9 @@ echo "[device]" | sudo tee -a /etc/NetworkManager/NetworkManager.conf
 echo "wifi.scan-rand-mac-address=false" | sudo tee -a /etc/NetworkManager/NetworkManager.conf
 cat /etc/NetworkManager/NetworkManager.conf
 
-### Fix sound
-amixer -c 0 sset 'Auto-Mute Mode' Disabled
-sudo alsactl store
-
 echo "options snd_mia index=0" | sudo tee -a /etc/modprobe.d/alsa-base.conf
 echo "options snd_hda_intel index=1" | sudo tee -a /etc/modprobe.d/alsa-base.conf
 cat /etc/modprobe.d/alsa-base.conf
-
 
 ############################################################
 
