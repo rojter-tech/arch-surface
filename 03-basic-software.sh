@@ -6,7 +6,9 @@ mkdir sources
 # Setting up yay and packer package for aur repository
 git clone https://aur.archlinux.org/yay.git ~/sources/yay
 cd ~/sources/yay
-makepkg -sci
+sudo pacman -S go --noconfir --needed && \
+makepkg -sc -f && \
+sudo pacman -U *.pkg.tar.xz --noconfir --needed && \
 yay --editmenu --nodiffmenu --save
 sudo pacman -S wget grep sed bash curl pacman expac jshon --needed --noconfirm
 [ -d /tmp/packer ] && rm -rf /tmp/packer
@@ -37,10 +39,10 @@ wget -qO - https://raw.githubusercontent.com/qzed/linux-surface/master/keys/qzed
 sudo pacman-key --finger luzmaximilian@gmail.com
 sudo pacman-key --lsign-key luzmaximilian@gmail.com
 echo "[linux-surface]" | sudo tee -a /etc/pacman.conf
-echo "Server = https://tmsp.io/fs/repos/arch/$repo/" | sudo tee -a /etc/pacman.conf
+echo "Server = https://tmsp.io/fs/repos/arch/\$repo/" | sudo tee -a /etc/pacman.conf
 yay -S libwacom-surface surface-dtx-daemon surface-control \
   linux-firmware-surface-book-2 --answerclean N --answeredit N --noconfirm --needed
-sudo pacman -Syyuu
+sudo pacman -Syyuu --noconfirm
 
 # Install NVIDIA and bumblebee
 sudo pacman -S nvidia-dkms nvidia-utils nvidia-settings bumblebee mesa --noconfirm --needed
@@ -48,7 +50,7 @@ grep '"yes"' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
 sudo sed -i -e 's/"yes"/"no"/g' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
 grep '"no"' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
 
-## From here on it depends on taste and preferences for the moment
+## From here on it depends on taste and preferences for the day
 
 # GNOME and GnomeDM
 sudo pacman -S gnome gnome-extra gnome-shell gdm --noconfirm --needed
@@ -93,6 +95,7 @@ yay -Syyuu --noconfirm --needed
 
 ### Fix WiFi
 sudo iw dev wlp1s0 set power_save off # Fix only for this session
+
 # Permanent fix
 echo "[connection]" | sudo tee -a /etc/NetworkManager/NetworkManager.conf
 echo "wifi.powersave = 2" | sudo tee -a /etc/NetworkManager/NetworkManager.conf
@@ -103,6 +106,7 @@ cat /etc/NetworkManager/NetworkManager.conf
 ### Fix sound
 amixer -c 0 sset 'Auto-Mute Mode' Disabled
 sudo alsactl store
+
 echo "options snd_mia index=0" | sudo tee -a /etc/modprobe.d/alsa-base.conf
 echo "options snd_hda_intel index=1" | sudo tee -a /etc/modprobe.d/alsa-base.conf
 cat /etc/modprobe.d/alsa-base.conf
