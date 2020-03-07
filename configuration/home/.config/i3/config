@@ -28,7 +28,6 @@ bindsym $mod+Ctrl+q exec --no-startup-id gnome-system-monitor
 bindsym $mod+Ctrl+v exec --no-startup-id urxvt hold -e sudo openvpn /home/dreuter/client.ovpn
 
 
-
 # Assign application to start in a certain way
 assign [class="^firefox$"] $ws1
 assign [class="^firefoxdeveloperedition$"] $ws2
