@@ -7,11 +7,12 @@ function run {
   fi
 }
 
+(run $HOME/.scripts/system-startup.sh) &
+
+
 #Set your native resolution IF it does not exist in xrandr
 #More info in the script
 #run $HOME/.xmonad/scripts/set-screen-resolution-in-virtualbox.sh
-(run $HOME/.scripts/connectwbl.sh) &
-(run $HOME/.scripts/start-servers.sh) &
 
 #Find out your monitor name with xrandr or arandr (save and you get this line)
 #xrandr --output eDP1 --primary --mode 3240x2160 --pos 0x0 --rotate normal --output DP1 --mode 2560x1449+3240+0 --rotate normal --output HDMI1 --off --output VIRTUAL1 --off
