@@ -1,0 +1,8 @@
+[Unit]
+Description=Search and link hwmon cpu temp
+
+[Service]
+ExecStart=/home/dreuter/.scripts/hwmon-link.sh
+
+[Install]
+WantedBy=default.target

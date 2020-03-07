@@ -1,0 +1,8 @@
+[Unit]
+Description=Notebooks etc.
+
+[Service]
+ExecStart=/home/dreuter/.scripts/dev-startup.sh
+
+[Install]
+WantedBy=default.target

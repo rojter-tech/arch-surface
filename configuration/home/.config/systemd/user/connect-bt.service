@@ -1,0 +1,8 @@
+[Unit]
+Description=Bluetooth devices etc.
+
+[Service]
+ExecStart=/home/dreuter/.scripts/connect_bt.sh
+
+[Install]
+WantedBy=default.target
