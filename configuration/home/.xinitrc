@@ -1,15 +1,34 @@
 #!/bin/sh
-# ~/.xinitrc
-feh --bg-scale ~/.xmonad/matrix_code-wallpaper-3000x2000.jpg
+# ~/.xinit.rc
+feh --bg-scale /home/dreuter/.xmonad/bg/code-coding_3840x2400.jpg
 
-# Executed by startx (run your window manager from here)
-if [ -d /etc/X11/xinit/xinitrc.d ]; then
-  for f in /etc/X11/xinit/xinitrc.d/*; do
-    [ -x "$f" ] && . "$f"
-  done
-  unset f
+userresources=$HOME/.Xresources
+usermodmap=$HOME/.Xmodmap
+sysresources=/etc/X11/xinit/.Xresources
+sysmodmap=/etc/X11/xinit/.Xmodmap
+
+# merge in defaults and keymaps
+if [ -f $sysresources ]; then
+    xrdb -merge $sysresources
 fi
 
-if [systemd-detect-virt = "oracle"];
-	/usr/bin/VBoxClient-all
+if [ -f $sysmodmap ]; then
+    xmodmap $sysmodmap
 fi
+
+if [ -f "$userresources" ]; then
+    xrdb -merge "$userresources"
+fi
+
+if [ -f "$usermodmap" ]; then
+    xmodmap "$usermodmap"
+fi
+
+if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+ for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+  [ -x "$f" ] && . "$f"
+ done
+ unset f
+fi
+
+exec i3
