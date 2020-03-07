@@ -1,0 +1,74 @@
+{
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.469610636277303,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 570,
+               "width": 720,
+               "x": 0,
+               "y": 0
+            },
+            "name": "dreuter@rOjterArchSurface:~",
+            "percent": 0.5,
+            "swallows": [
+               {
+               "class": "^URxvt$",
+               "instance": "^urxvt$",
+               "title": "^dreuter\\@rOjterArchSurface\\:\\~$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "none",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1365,
+               "width": 751,
+               "x": 0,
+               "y": 0
+            },
+            "name": "Remmina Remote Desktop Client",
+            "percent": 0.5,
+            "swallows": [
+               {
+               "class": "^org\\.remmina\\.Remmina$",
+               "instance": "^org\\.remmina\\.Remmina$",
+               "title": "^Remmina\\ Remote\\ Desktop\\ Client$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    "border": "normal",
+    "current_border_width": 3,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1343,
+       "width": 1329,
+       "x": 0,
+       "y": 0
+    },
+    "name": "dreuter@rOjterAcerServ",
+    "percent": 0.530389363722697,
+    "swallows": [
+       {
+       "class": "^org\\.remmina\\.Remmina$",
+       "instance": "^org\\.remmina\\.Remmina$",
+       "title": "^dreuter\\@rOjterAcerServ$"
+       }
+    ],
+    "type": "con"
+}
+

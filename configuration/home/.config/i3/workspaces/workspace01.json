@@ -1,0 +1,20 @@
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1185,
+       "width": 2084,
+       "x": 0,
+       "y": 0
+    },
+    "percent": 1,
+    "swallows": [
+       {
+            "class": "^firefox$",
+            "instance": "^Navigator$",
+            "window_role": "^browser$"
+       }
+    ],
+    "type": "con"
+}

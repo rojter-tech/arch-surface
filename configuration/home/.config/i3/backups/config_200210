@@ -1,6 +1,5 @@
 ######################################################## rOjter Config ##########################################################
 set $mod Mod4
-workspace_layout stacking
 
 # Basic executions
 exec_always --no-startup-id xrdb -load ~/.Xresources
@@ -27,15 +26,14 @@ bindsym $mod+Ctrl+c exec --no-startup-id code
 bindsym $mod+Ctrl+q exec --no-startup-id gnome-system-monitor
 bindsym $mod+Ctrl+v exec --no-startup-id urxvt hold -e sudo openvpn /home/dreuter/client.ovpn
 
-
-
 # Assign application to start in a certain way
-assign [class="^firefox$"] $ws1
-assign [class="^firefoxdeveloperedition$"] $ws2
-assign [class="^Code$"] $ws9
-assign [class="^Remmina$"] $ws10
-assign [class="^Spotify$"] $ws11
-assign [class="^Teams$"] $ws12
+
+assign [class="^Firefox$"] 1
+assign [class="^firefoxdeveloperedition$"] 2
+assign [class="^Code$"] 9
+assign [class="^Remmina$"] 10
+assign [class="^Spotify$"] 11
+assign [class="^Teams$"] 12
 # ---------------------------------------
 for_window [class="firefox"] move to workspace 1
 for_window [class="firefoxdeveloperedition"] move to workspace 2
@@ -47,19 +45,8 @@ for_window [instance="^gpartedbin$"] float enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
-# Startups
-
-# Window layout startups
-assign [instance="firefox"] $ws1
-assign [instance="firefoxdeveloperedition"] $ws2
-assign [instance="remmina"] $ws10
-exec_always --no-startup-id ~/.config/i3/start_w01.sh
-exec_always --no-startup-id ~/.config/i3/start_w02.sh
-exec_always --no-startup-id ~/.config/i3/start_w10.sh
-exec_always --no-startup-id ~/.config/i3/start_w12.sh
-
 # Program startups
-exec_always --no-startup-id code
+exec_always --no-startup-id teams
 
 # Screenshots
 # --------------------------------------------------------------------------------------------------------------------------------
@@ -97,7 +84,7 @@ mode "move" {
 # finds out, if available)
 bar {
         position top
-        font pango:DejaVu Sans Mono 9
+        font pango:DejaVu Sans Mono 10
         status_command i3status
 }
 
@@ -111,11 +98,11 @@ bindsym $mod+Ctrl+Return exec thunar
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 9
+font pango:monospace 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 9
+#font pango:DejaVu Sans Mono 8
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
