@@ -2,7 +2,7 @@
     "border": "normal",
     "floating": "auto_off",
     "layout": "splitv",
-    "percent": 0.469610636277303,
+    "percent": 0.371794871794872,
     "type": "con",
     "nodes": [
         {
@@ -61,7 +61,7 @@
        "y": 0
     },
     "name": "dreuter@rOjterAcerServ",
-    "percent": 0.530389363722697,
+    "percent": 0.628205128205128,
     "swallows": [
        {
        "class": "^org\\.remmina\\.Remmina$",
