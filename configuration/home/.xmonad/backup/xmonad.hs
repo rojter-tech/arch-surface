@@ -40,7 +40,6 @@ myStartupHook = do
     spawn "$HOME/.xmonad/scripts/autostart.sh"
     setWMName "LG3D"
 
--- colours
 normBordColor = "#4c566a"
 focdBordColor = "#5e81ac"
 backColor     = "#282c34"
