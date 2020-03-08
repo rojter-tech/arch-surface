@@ -7,8 +7,11 @@ function run {
   fi
 }
 
-(run $HOME/.scripts/system-startup.sh) &
 
+(run $HOME/.scripts/system-startup.sh) &
+(sleep 2; run $HOME/.config/polybar/launch.sh) &
+
+#sleep 4; run xmobar &
 
 #Set your native resolution IF it does not exist in xrandr
 #More info in the script
@@ -22,7 +25,7 @@ function run {
 #xrandr --output LVDS1 --mode 1366x768 --output DP3 --mode 1920x1080 --right-of LVDS1
 #xrandr --output HDMI2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off
 
-#(sleep 2; run $HOME/.config/polybar/launch.sh) &
+
 
 #change your keyboard if you need it
 #setxkbmap -layout be

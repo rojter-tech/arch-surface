@@ -1,7 +1,7 @@
 #!/bin/bash
 # Assumes complete partition system mounted and 
 # ready, including EFI parition mounted as /boot/efi
-pacstrap /mnt base base-devel openssh terminus-font dhcpcd iw \
+pacstrap /mnt base base-devel openssh terminus-font awesome-terminal-fonts dhcpcd iw \
   screenfetch wpa_supplicant networkmanager dialog grub os-prober efibootmgr sbsigntools
 genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt

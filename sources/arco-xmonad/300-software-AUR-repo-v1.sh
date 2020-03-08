@@ -45,9 +45,9 @@ echo "Installing category Games"
 echo "Installing category Graphics"
 
 
-echo "Installing category Internet"
+#echo "Installing category Internet"
 
-sh AUR/install-vivaldi-and-ffmeg-codecs-v*.sh
+#sh AUR/install-vivaldi-and-ffmeg-codecs-v*.sh
 
 
 echo "Installing category Multimedia"

@@ -51,7 +51,7 @@ sudo pacman -S gmrun --noconfirm --needed
 sudo pacman -S gsimplecal --noconfirm --needed
 sudo pacman -S gtop --noconfirm --needed
 sudo pacman -S imagemagick --noconfirm --needed
-sudo pacman -S lxappearance-gtk3 --noconfirm --needed
+#sudo pacman -S lxappearance-gtk3 --noconfirm --needed
 sudo pacman -S lxrandr --noconfirm --needed
 sudo pacman -S nitrogen --noconfirm --needed
 sudo pacman -S playerctl --noconfirm --needed
