@@ -21,23 +21,23 @@ conky.config = {
 											-- middle-left,middle-middle,middle-right,none
 	--Arch Duoscreen
 	--gap_x = -1910,
-	gap_x = 50,								-- pixels between right or left border
+	gap_x = 100,							-- pixels between right or left border
 	gap_y = 10,								-- pixels between bottom or left border
 	minimum_height = 200,					-- minimum height of window
-	minimum_width = 380,					-- minimum height of window
-	maximum_width = 380,					-- maximum height of window
+	minimum_width = 430,					-- minimum width of window
+	maximum_width = 480,					-- maximum width of window
 
 	--Graphical
 
 	border_inner_margin = 5, 				-- margin between border and text
 	border_outer_margin = 5, 				-- margin between border and edge of window
 	border_width = 0, 						-- border width in pixels
-	default_bar_width = 380,				-- default is 0 - full width
+	default_bar_width = 500,				-- default is 0 - full width
 	default_bar_height = 10,				-- default is 6
 	default_gauge_height = 25,				-- default is 25
-	default_gauge_width =40,				-- default is 40
+	default_gauge_width = 40,				-- default is 40
 	default_graph_height = 40,				-- default is 25
-	default_graph_width = 153,				-- default is 0 - full width
+	default_graph_width = 150,				-- default is 0 - full width
 	default_shade_color = '#000000',		-- default shading colour
 	default_outline_color = '#000000',		-- default outline colour
 	draw_borders = false,					-- draw borders around text
@@ -55,7 +55,7 @@ conky.config = {
 	max_user_text = 16384,					-- max text in conky default 16384
 	override_utf8_locale = true,			-- force UTF8 requires xft
 	short_units = true,						-- shorten units from KiB to k
-	top_name_width = 21,					-- width for $top name value default 15
+	top_name_width = 15,					-- width for $top name value default 15
 	top_name_verbose = false,				-- If true, top name shows the full command line of  each  process - Default value is false.
 	uppercase = false,						-- uppercase or not
 	use_spacer = 'none',					-- adds spaces around certain objects to align - default none

@@ -2,11 +2,12 @@
 USERHOME=configuration/home
 SYSTEM=configuration/system
 # home dirs
+mkdir -p ~/.scripts; rsync -av $USERHOME/.scripts/* ~/.scripts/
+mkdir -p ~/.xmonad; rsync -av $USERHOME/.xmonad/* ~/.xmonad/
+mkdir -p ~/.screenlayout; rsync -av $USERHOME/.screenlayout/* ~/.screenlayout/
 mkdir -p ~/.config/i3; rsync -av $USERHOME/.config/i3/* ~/.config/i3/
 mkdir -p ~/.config/polybar; rsync -av $USERHOME/.config/polybar/* ~/.config/polybar/
 mkdir -p ~/.config/systemd; rsync -av $USERHOME/.config/systemd/* ~/.config/systemd/
-mkdir -p ~/.scripts; rsync -av $USERHOME/.scripts/* ~/.scripts/
-mkdir -p ~/.xmonad; rsync -av $USERHOME/.xmonad/* ~/.xmonad/
 # home files
 rsync -av $USERHOME/.Xresources ~/.Xresources
 rsync -av $USERHOME/.xinitrc ~/.xinitrc
