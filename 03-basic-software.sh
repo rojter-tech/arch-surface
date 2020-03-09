@@ -41,7 +41,7 @@ wget -qO - https://raw.githubusercontent.com/qzed/linux-surface/master/keys/qzed
     | sudo pacman-key --add -
 sudo pacman-key --finger luzmaximilian@gmail.com
 sudo pacman-key --lsign-key luzmaximilian@gmail.com
-yay -S mokutil-git rust --answerclean N --answeredit N --noconfirm --needed
+yay -S mokutil-git rust oblogout --answerclean N --answeredit N --noconfirm --needed
 yay -S libwacom-surface surface-dtx-daemon surface-control \
   linux-firmware-surface-book-2 --answerclean N --answeredit N --noconfirm --needed
 sudo pacman -Syyuu --noconfirm
@@ -49,15 +49,15 @@ sudo pacman -S linux-surface linux-surface-docs linux-surface-headers \
   linux-surface-secureboot-mok --noconfirm --needed
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
-# Install NVIDIA and bumblebee
-sudo pacman -S nvidia-dkms nvidia-utils nvidia-settings bumblebee mesa mesa-demos --noconfirm --needed
+# Install NVIDIA
+sudo pacman -S nvidia-dkms nvidia-utils nvidia-settings mesa mesa-demos --noconfirm --needed
 grep '"yes"' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
 sudo sed -i -e 's/"yes"/"no"/g' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
 grep '"no"' /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
 
 ## From here on it depends on taste and preferences for the day
 
-# GNOME and GnomeDM
+# GNOME and GDM
 sudo pacman -S gnome gnome-extra gnome-shell gdm --noconfirm --needed
 sudo systemctl enable gdm.service
 yay -S gnome-shell-extensions gnome-shell-extension-dash-to-dock \

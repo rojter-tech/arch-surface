@@ -1,13 +1,12 @@
 #!/bin/bash
 groupadd -r autologin
-groupadd -r bumblebee
 groupadd -r docker
 useradd -m -g users \
-  -G wheel,storage,power,docker,autologin,audio,bumblebee \
+  -G wheel,storage,power,docker,autologin,audio \
   -s /bin/bash dreuter
 
 # Add user to wheel group
-usermod -a -G wheel,storage,power,docker,autologin,audio,bumblebee dreuter
+usermod -a -G wheel,storage,power,docker,autologin,audio dreuter
 
 # Change access to wheel group
 grep "# %wheel ALL=(ALL) NOPASSWD: ALL" /etc/sudoers && \
