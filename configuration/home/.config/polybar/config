@@ -112,11 +112,11 @@ module-margin-right = 3
 enable-ipc = true
 
 ;https://github.com/jaagr/polybar/wiki/Fonts
-font-0 = "Noto Sans:size=10;0"
-font-1 = "FontAwesome:size=13;0"
-font-2 = "Noto Sans:size=10;0"
-font-3 = "Noto Sans Mono:size=10;0"
-font-4 = "FontAwesome5Brands:size=13;0"
+font-0 = "Noto Sans:size=15;0"
+font-1 = "FontAwesome:size=16;0"
+font-2 = "Noto Sans:size=18;0"
+font-3 = "Noto Sans Mono:size=15;0"
+font-4 = "FontAwesome5Brands:size=18;0"
 
 modules-left = ewmh spotify1
 modules-center = kernel filesystem
@@ -1149,7 +1149,7 @@ mount-1 = /home
 
 ; Seconds to sleep between updates
 ; Default: 30
-interval = 30
+interval = 20
 
 ; Display fixed precision values
 ; Default: false
