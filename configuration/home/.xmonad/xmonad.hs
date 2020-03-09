@@ -92,13 +92,15 @@ myMouseBindings XConfig {XMonad.modMask = modMask} = M.fromList
 
 myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
   ----------------------------------------------------------------------
+
+  [
   -- SUPER + FUNCTION KEYS
-  [ ((modMask, xK_e), spawn "code" )
+    ((modMask, xK_e), spawn "code" )
   , ((modMask, xK_f), sendMessage $ Toggle NBFULL)
   , ((modMask, xK_h), spawn "urxvt 'htop task manager' -e htop" )
   , ((modMask, xK_m), spawn "pragha" )
   , ((modMask, xK_q), kill )
-  , ((modMask, xK_r), spawn "rofi-theme-selector" )
+  , ((modMask, xK_r), spawn "xfce4-appfinder" )
   , ((modMask, xK_t), spawn "urxvt" )
   , ((modMask, xK_v), spawn "pavucontrol" )
   , ((modMask, xK_w), spawn ".config/polybar/launch.sh" )
@@ -132,19 +134,17 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
   -- CONTROL + SUPER KEYS
   , ((controlMask .|. modMask, xK_0 ), spawn "filelight")
   , ((controlMask .|. modMask, xK_9 ), spawn "vmware")
-  , ((controlMask .|. modMask, xK_o ), spawn "(/opt/DataGrip-2019.2.2/bin/datagrip.sh) &")
-  , ((controlMask .|. modMask, xK_i ), spawn "(/opt/idea-IU-192.6262.58/bin/idea.sh) &")
-  , ((controlMask .|. modMask, xK_p ), spawn "(/opt/pycharm-2019.2.1/bin/pycharm.sh) &")
   , ((controlMask .|. modMask, xK_c ), spawn "code")
   , ((controlMask .|. modMask, xK_f ), spawn "firefox")
   , ((controlMask .|. modMask, xK_d ), spawn "firefox-developer-edition")
   , ((controlMask .|. modMask, xK_t ), spawn "urxvt")
-  , ((controlMask .|. modMask, xK_g ), spawn "chromium -no-default-browser-check")
+  , ((controlMask .|. modMask, xK_g ), spawn "google-chrome-stable")
+  , ((controlMask .|. modMask, xK_h ), spawn "chromium -no-default-browser-check")
   , ((controlMask .|. modMask, xK_s ), spawn "spotify")
   , ((controlMask .|. modMask, xK_j ), spawn "urxvt hold -e julia -p 8 --project=/home/dreuter/Github/julia-paths")
   , ((controlMask .|. modMask, xK_m ), spawn "urxvt hold -e matlab -nojvm -nodisplay -nosplash")
   , ((controlMask .|. modMask, xK_v ), spawn "urxvt hold -e sudo openvpn /home/dreuter/.client.ovpn")
-  , ((controlMask .|. modMask, xK_Return ), spawn "urxvt")
+  , ((controlMask .|. modMask, xK_Return ), spawn "thunar")
   
   -- CONTROL + ALT KEYS
   , ((controlMask .|. mod1Mask , xK_a ), spawn "xfce4-appfinder")
@@ -153,12 +153,12 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
   , ((controlMask .|. mod1Mask , xK_e ), spawn "evolution")
   , ((controlMask .|. mod1Mask , xK_f ), spawn "firefox")
   , ((controlMask .|. mod1Mask , xK_d ), spawn "firefox-developer-edition")
-  , ((controlMask .|. mod1Mask , xK_g ), spawn "chromium -no-default-browser-check")
+  , ((controlMask .|. mod1Mask , xK_h ), spawn "chromium -no-default-browser-check")
+  , ((controlMask .|. mod1Mask , xK_g ), spawn "google-chrome-stable")
   , ((controlMask .|. mod1Mask , xK_i ), spawn "nitrogen")
   , ((controlMask .|. mod1Mask , xK_k ), spawn "slimlock")
   , ((controlMask .|. mod1Mask , xK_m ), spawn "xfce4-settings-manager")
   , ((controlMask .|. mod1Mask , xK_o ), spawn "$HOME/.xmonad/scripts/compton-toggle.sh")
-  , ((controlMask .|. mod1Mask , xK_p ), spawn "pamac-manager")
   , ((controlMask .|. mod1Mask , xK_r ), spawn "rofi-theme-selector")
   , ((controlMask .|. mod1Mask , xK_s ), spawn "spotify")
   , ((controlMask .|. mod1Mask , xK_t ), spawn "urxvt")
@@ -168,7 +168,6 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
   , ((controlMask .|. mod1Mask , xK_Return ), spawn "urxvt")
 
   -- ALT + ... KEYS
-  , ((mod1Mask, xK_r), spawn "xmonad --restart" )
   , ((mod1Mask, xK_F2), spawn "gmrun" )
   , ((mod1Mask, xK_F3), spawn "xfce4-appfinder" )
   , ((mod1Mask, xK_s), spawn "setxkbmap se")
@@ -206,6 +205,9 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
 
   --------------------------------------------------------------------
   --  XMONAD LAYOUT KEYS
+  -- mod$->Super
+  -- mod1$->Alt
+  -- xK_([A-Z]|Keyword}
 
   -- Cycle through the available layout algorithms.
   , ((modMask, xK_space), sendMessage NextLayout)
