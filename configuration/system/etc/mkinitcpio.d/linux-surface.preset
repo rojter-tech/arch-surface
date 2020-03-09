@@ -1,0 +1,14 @@
+# mkinitcpio preset file for the 'linux-surface' package
+
+ALL_config="/etc/mkinitcpio-surface.conf"
+ALL_kver="/boot/vmlinuz-linux-surface"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio-surface.conf"
+default_image="/boot/initramfs-linux-surface.img"
+#default_options=""
+
+#fallback_config="/etc/mkinitcpio-surface.conf"
+fallback_image="/boot/initramfs-linux-surface-fallback.img"
+fallback_options="-S autodetect"

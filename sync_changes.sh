@@ -15,3 +15,4 @@ rsync -av $USERHOME/.xmobarrc ~/.xmobarrc
 
 # system files
 sudo rsync $USERHOME/.config/i3/i3status.conf /etc/i3status.conf
+sudo rsync $SYSTEM/etc/X11/xorg.conf.d/10-monitor.conf /etc/X11/xorg.conf.d/10-monitor.conf

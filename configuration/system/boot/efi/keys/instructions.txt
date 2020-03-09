@@ -1,0 +1,11 @@
+# Enroll the key to shim
+sudo mokutil --import arch.cer
+
+# Restart your system. You will encounter a blue screen of a tool called MOKManager.
+# Select "Enroll MOK" and then "View key".
+# Afterwards continue the process and you must enter the password.
+
+# Continue with booting your system.
+
+# Verify your key is enrolled via:
+sudo mokutil --list-enrolled

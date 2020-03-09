@@ -95,10 +95,10 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
 
   [
   -- SUPER + FUNCTION KEYS
-    ((modMask, xK_e), spawn "code" )
+    ((modMask, xK_d), spawn "dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")
   , ((modMask, xK_f), sendMessage $ Toggle NBFULL)
   , ((modMask, xK_h), spawn "urxvt 'htop task manager' -e htop" )
-  , ((modMask, xK_m), spawn "pragha" )
+  , ((modMask, xK_l), spawn "slimlock" )
   , ((modMask, xK_q), kill )
   , ((modMask, xK_r), spawn "xfce4-appfinder" )
   , ((modMask, xK_t), spawn "urxvt" )
@@ -120,12 +120,11 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
   , ((modMask, xK_F10), spawn "spotify" )
   , ((modMask, xK_F11), spawn "rofi -show run -fullscreen" )
   , ((modMask, xK_F12), spawn "rofi -show run" )
-  , ((modMask, xK_a), spawn "setxkbmap us" )
-  , ((modMask, xK_s), spawn "setxkbmap se" )
+  , ((modMask, xK_a), spawn "setxkbmap -option 'grp:alt_shift_toggle' -layout us,se -variant qwerty" )
+  , ((modMask, xK_s), spawn "setxkbmap -option 'grp:alt_shift_toggle' -layout se,us -variant qwerty" )
 
   -- SUPER + SHIFT KEYS
   , ((modMask .|. shiftMask , xK_Return ), spawn "thunar")
-  , ((modMask .|. shiftMask , xK_d ), spawn "dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")
   , ((modMask .|. shiftMask , xK_r ), spawn "xmonad --recompile && xmonad --restart")
   , ((modMask .|. shiftMask , xK_q ), kill)
   , ((modMask .|. shiftMask , xK_x ), io (exitWith ExitSuccess))

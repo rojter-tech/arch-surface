@@ -1,0 +1,14 @@
+# mkinitcpio preset file for the 'linux-surface-lts' package
+
+ALL_config="/etc/mkinitcpio-surface.conf"
+ALL_kver="/boot/vmlinuz-linux-surface-lts"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+default_image="/boot/initramfs-linux-surface-lts.img"
+#default_options=""
+
+#fallback_config="/etc/mkinitcpio.conf"
+fallback_image="/boot/initramfs-linux-surface-lts-fallback.img"
+fallback_options="-S autodetect"
