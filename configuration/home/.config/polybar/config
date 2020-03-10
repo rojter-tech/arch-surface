@@ -1095,7 +1095,6 @@ enable-click = true
 enable-scroll = true
 reverse-scroll = true
 
-
 icon-0 = 1;
 icon-1 = 2;
 icon-2 = 3;
@@ -1116,25 +1115,23 @@ label-active = %icon% %name%
 label-active-foreground = ${colors.foreground}
 label-active-background = ${colors.background}
 label-active-underline= #6790eb
-label-active-padding = 2
+label-active-padding = 1
 
 label-occupied = %name%
 label-occupied-background = ${colors.background}
-label-occupied-padding = 2
+label-occupied-padding = 1
 
 label-urgent = %name%
 label-urgent-foreground = ${colors.foreground}
 label-urgent-background = ${colors.alert}
 label-urgent-underline = ${colors.alert}
-label-urgent-padding = 2
-
+label-urgent-padding = 1
 
 label-empty = %name%
 label-empty-foreground = ${colors.foreground}
-label-empty-padding = 2
+label-empty-padding = 1
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
-
 
 ################################################################################
 

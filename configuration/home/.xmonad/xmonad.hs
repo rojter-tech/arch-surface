@@ -39,6 +39,7 @@ import Control.Monad (liftM2)
 myStartupHook = do
     spawn "$HOME/.xmonad/scripts/autostart.sh"
     setWMName "LG3D"
+    spawnOn "x_12" "teams"
 
 normBordColor = "#4c566a"
 focdBordColor = "#5e81ac"
@@ -48,7 +49,8 @@ myModMask = mod4Mask
 myFocusFollowsMouse = True
 myBorderWidth = 2
 myTerminal    = "urxvt"
-myWorkspaces    = ["\61612","\61899","\61947","\61635","\61502","\61501","\61705","\61564","\62150","\61872"]
+--myWorkspaces    = ["\61612","\61899","\61947","\61635","\61502","\61501","\61705","\61564","\62150","\61872", "-", "="]
+myWorkspaces    = ["1","2","3","4","5","6","7","8","9","10","11","12"]
 myBaseConfig = desktopConfig
 
 myManageHook = composeAll . concat $
@@ -253,7 +255,7 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
   ++
 
   [((m .|. modMask, k), windows $ f i)
-   | (i, k) <- zip (XMonad.workspaces conf) [xK_1,xK_2,xK_3,xK_4,xK_5,xK_6,xK_7,xK_8,xK_9,xK_0]
+   | (i, k) <- zip (XMonad.workspaces conf) [xK_1,xK_2,xK_3,xK_4,xK_5,xK_6,xK_7,xK_8,xK_9,xK_0,xK_minus,xK_equal]
       , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)
       , (\i -> W.greedyView i . W.shift i, shiftMask)]]
 
