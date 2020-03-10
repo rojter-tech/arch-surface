@@ -19,6 +19,7 @@ import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.IndependentScreens
 import XMonad.Layout.CenteredMaster(centerMaster)
+import XMonad.Actions.OnScreen
 import XMonad.Hooks.UrgencyHook
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.DynamicLog
@@ -39,7 +40,12 @@ import Control.Monad (liftM2)
 myStartupHook = do
     spawn "$HOME/.xmonad/scripts/autostart.sh"
     setWMName "LG3D"
-    spawnOn "x_12" "teams"
+    spawnOn "1" "firefox"
+    spawnOn "9" "code"
+    spawnOn "12" "urxvt"
+    spawnOn "12" "urxvt"
+    spawnOn "12" "teams"
+    windows (greedyViewOnScreen 0 "1" . greedyViewOnScreen 1 "12")
 
 normBordColor = "#4c566a"
 focdBordColor = "#5e81ac"
