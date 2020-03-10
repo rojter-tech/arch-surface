@@ -17,3 +17,5 @@ rsync -av $USERHOME/.xmobarrc ~/.xmobarrc
 sudo rsync $USERHOME/.config/i3/i3status.conf /etc/i3status.conf
 sudo rsync $SYSTEM/etc/X11/xorg.conf.d/10-monitor.conf /etc/X11/xorg.conf.d/10-monitor.conf
 sudo rsync $SYSTEM/etc/profile.d/hidpi.sh /etc/profile.d/hidpi.sh
+sudo rsync $SYSTEM/etc/lightdm/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
+sudo rsync $SYSTEM/etc/X11/xorg.conf /etc/X11/xorg.conf
