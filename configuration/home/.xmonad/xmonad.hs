@@ -38,6 +38,7 @@ import Graphics.X11.ExtraTypes.XF86
 import Control.Monad (liftM2)
 
 myStartupHook = do
+    windows (greedyViewOnScreen 0 "9" . greedyViewOnScreen 1 "12")
     spawn "$HOME/.xmonad/scripts/autostart.sh"
     setWMName "LG3D"
     spawnOn "1" "firefox"
@@ -45,7 +46,6 @@ myStartupHook = do
     spawnOn "12" "urxvt"
     spawnOn "12" "urxvt"
     spawnOn "12" "teams"
-    windows (greedyViewOnScreen 0 "1" . greedyViewOnScreen 1 "12")
 
 normBordColor = "#4c566a"
 focdBordColor = "#5e81ac"
