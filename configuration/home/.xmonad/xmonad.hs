@@ -38,10 +38,10 @@ import Graphics.X11.ExtraTypes.XF86
 import Control.Monad (liftM2)
 
 myStartupHook = do
-    windows (greedyViewOnScreen 0 "9" . greedyViewOnScreen 1 "12")
     spawn "$HOME/.xmonad/scripts/autostart.sh"
     setWMName "LG3D"
     spawnOn "1" "firefox"
+    spawnOn "2" "firefox-developer-edition"
     spawnOn "9" "code"
     spawnOn "12" "urxvt"
     spawnOn "12" "urxvt"
