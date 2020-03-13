@@ -43,6 +43,7 @@ myStartupHook = do
     spawnOn "1" "firefox"
     spawnOn "2" "firefox-developer-edition"
     spawnOn "9" "code"
+    spawnOn "10" "remmina /home/dreuter/.local/share/remmina/group_rdp_dreuter@rojteracerserv_rojteracerserv-rojter-lo.remmina"
     spawnOn "12" "urxvt"
     spawnOn "12" "urxvt"
     spawnOn "12" "teams"

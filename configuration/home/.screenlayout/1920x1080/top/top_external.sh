@@ -10,7 +10,7 @@ HEIGHT_MAIN=2160;                              HEIGHT_EXT=1080; #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
   #    #    #    #    #    #    #    #    #    #    #    #    #  
 # # # # # # # # # # # # # # # Default # # # # # # # # # # # # # #
-SCALENR_MAIN=0.65                                               #
+SCALENR_MAIN=1.00                                               #
 LB=0.5; UB=1 # Lower and upper boundaries                       #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -73,12 +73,6 @@ xrandr_no_external() {
 
 
 main() {
-    echo "."
-    sleep 0.3
-    echo ".."
-    sleep 0.3
-    echo "..."
-    sleep 0.3
     set_scaling_properties
     if external_exists; then
         echo "Found external, setting up both screens"
