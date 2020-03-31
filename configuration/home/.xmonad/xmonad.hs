@@ -43,7 +43,6 @@ myStartupHook = do
     spawnOn "1" "firefox"
     spawnOn "2" "firefox-developer-edition"
     spawnOn "9" "code"
-    spawnOn "10" "remmina /home/dreuter/.local/share/remmina/group_rdp_dreuter@rojteracerserv_rojteracerserv-rojter-lo.remmina"
     spawnOn "12" "urxvt"
     spawnOn "12" "urxvt"
     spawnOn "12" "teams"
@@ -184,7 +183,6 @@ myKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList $
   , ((controlMask .|. shiftMask , xK_Escape ), spawn "xfce4-taskmanager")
   , ((controlMask .|. shiftMask , xK_j ), spawn "urxvt hold -e julia -p 8 --project=/home/dreuter/Github/julia-paths")
   , ((controlMask .|. shiftMask , xK_m ), spawn "urxvt hold -e matlab -nojvm -nodisplay -nosplash")
-  , ((controlMask .|. shiftMask , xK_p ), spawn "urxvt hold -e /home/dreuter/.julia/conda/3/bin/python")
   , ((controlMask .|. shiftMask , xK_h ), spawn "urxvt hold -e ghci")
   , ((controlMask .|. shiftMask , xK_i ), spawn "urxvt hold -e jshell")
   , ((controlMask .|. shiftMask , xK_r ), spawn "urxvt hold -e R")
