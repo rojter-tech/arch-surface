@@ -22,5 +22,6 @@ sudo mkdir -p /etc/X11; sudo rsync -v $SYSTEM/etc/X11/xorg.conf /etc/X11/xorg.co
 sudo mkdir -p /etc/X11/xorg.conf.d; sudo rsync -v $SYSTEM/etc/X11/xorg.conf.d/10-monitor.conf /etc/X11/xorg.conf.d/10-monitor.conf
 sudo mkdir -p /etc/profile.d; sudo rsync -v $SYSTEM/etc/profile.d/hidpi.sh /etc/profile.d/hidpi.sh
 sudo mkdir -p /etc/lightdm; sudo rsync -v $SYSTEM/etc/lightdm/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
+sudo mkdir -p /etc/default; sudo rsync -v $SYSTEM/etc/default/grub /etc/default/grub
 #/usr sub
 sudo mkdir -p /usr/share/backgrounds/arch; sudo rsync -rv $SYSTEM/usr/share/backgrounds/arch/* /usr/share/backgrounds/arch
